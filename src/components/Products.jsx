@@ -1,6 +1,6 @@
 import { products } from '../data/content'
 import Icon from './Icons'
-import { Reveal, Group, Item } from './motion'
+import { Reveal, Group, Item, WordsUp } from './motion'
 
 export default function Products() {
   return (
@@ -8,7 +8,7 @@ export default function Products() {
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{products.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{products.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={products.title} /></h2>
           <p className="lead mt-5">{products.sub}</p>
         </Reveal>
 

@@ -1,5 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import ScrollManager from './components/ScrollManager'
+import SmoothScroll from './components/SmoothScroll'
+import { ScrollProgress } from './components/motion'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Terms from './pages/Terms'
@@ -12,6 +14,8 @@ import Faq from './pages/Faq'
 export default function App() {
   return (
     <>
+      <SmoothScroll />
+      <ScrollProgress />
       <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />

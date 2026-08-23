@@ -1,6 +1,6 @@
 import { trust } from '../data/content'
 import Icon from './Icons'
-import { Reveal, Group, Item, CountUp } from './motion'
+import { Reveal, Group, Item, CountUp, WordsUp } from './motion'
 
 export default function Trust() {
   return (
@@ -12,7 +12,7 @@ export default function Trust() {
       <div className="container-page relative">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="pill">{trust.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08] text-white">{trust.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08] text-white"><WordsUp text={trust.title} /></h2>
           <span className="rule-gold mx-auto mt-6" aria-hidden="true" />
         </Reveal>
 

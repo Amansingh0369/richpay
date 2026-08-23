@@ -83,27 +83,51 @@ export function Item({ children, as = 'div', variants = fadeUp, className = '', 
   return <MotionTag className={className} variants={variants} {...rest}>{children}</MotionTag>
 }
 
-/* Headline that reveals word by word. Short headlines only (<8 words) per the
-   skill's SplitText guidance — never body copy. */
-export function WordsUp({ text, className = '', delay = 0, wordClassName = '' }) {
+/* Headline that reveals word by word from behind a mask — the reference site's
+   signature move. Short headlines only (<8 words) per the skill's SplitText
+   guidance; never body copy (one wrapper element per word is a real DOM cost).
+
+   THE TRIGGER LIVES ON THE CONTAINER, NOT THE WORDS. Each word starts 108%
+   below its mask, and IntersectionObserver clips a target against its ancestors'
+   overflow — so a masked word reports zero visible area and `whileInView` on it
+   would never fire, leaving every heading permanently invisible. The unclipped
+   container observes instead and drives the words through variants.
+
+   Under reduced motion it renders as plain text with no wrappers at all. */
+export function WordsUp({ text, className = '', delay = 0, wordClassName = '', amount = 0.4 }) {
   const reduce = useReducedMotion()
   if (reduce) return <span className={className}>{text}</span>
   return (
-    <span className={className} aria-label={text}>
+    <motion.span
+      className={className}
+      aria-label={text}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.062, delayChildren: delay } } }}
+    >
+      {/* The mask clips at its content box, which sits above the glyph
+          descenders when line-height is tight — a "y" or "g" gets shaved as the
+          word arrives. pb gives the clip edge room; the equal -mb takes that
+          room back out of layout, so baselines and line spacing are untouched. */}
       {text.split(' ').map((w, i) => (
-        <span key={`${w}-${i}`} className="inline-block overflow-hidden align-bottom">
+        <span key={`${w}-${i}`} className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]">
           <motion.span
             aria-hidden="true"
             className={`inline-block ${wordClassName}`}
-            initial={{ y: '108%' }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.78, ease: EASE, delay: delay + i * 0.062 }}
+            /* translateZ promotes the word to its own compositor layer, so the
+               browser moves a cached raster instead of re-rasterising it each
+               frame. That matters most for gradient text: background-clip:text
+               forces a repaint on every transform otherwise, which is what made
+               the hero's accent words jitter. */
+            style={{ willChange: 'transform', transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
+            variants={{ hidden: { y: '108%' }, show: { y: 0, transition: { duration: 0.78, ease: EASE } } }}
           >
             {w}&nbsp;
           </motion.span>
         </span>
       ))}
-    </span>
+    </motion.span>
   )
 }
 
@@ -146,6 +170,23 @@ export function CountUp({ value, className = '', duration = 1.6 }) {
   }, [inView, reduce, value, duration]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return <span ref={ref} className={className}>{shown}</span>
+}
+
+/* Thin progress bar showing how far through the document the reader is.
+   Decorative and aria-hidden — it duplicates the scrollbar, so it must not be
+   announced. Hidden entirely under reduced motion. */
+export function ScrollProgress() {
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 })
+  if (reduce) return null
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-[linear-gradient(90deg,var(--color-gold),var(--color-gold-soft))]"
+    />
+  )
 }
 
 /* Decorative parallax. Background/ornament layers only — never text or controls. */

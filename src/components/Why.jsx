@@ -1,6 +1,6 @@
 import { why } from '../data/content'
 import Icon from './Icons'
-import { Reveal, Group, Item, CountUp } from './motion'
+import { Reveal, Group, Item, CountUp, WordsUp } from './motion'
 import mark from '../assets/richpay-mark-invert.png'
 
 /* ============================================================================
@@ -31,7 +31,7 @@ export default function Why() {
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{why.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{why.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={why.title} /></h2>
           <p className="lead mt-6">{why.sub}</p>
         </Reveal>
 

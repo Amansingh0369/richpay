@@ -1,6 +1,6 @@
 import { testimonials } from '../data/content'
 import Icon from './Icons'
-import { Reveal, Group, Item, CountUp } from './motion'
+import { Reveal, Group, Item, CountUp, WordsUp } from './motion'
 
 /* Deliberately a static grid, not a carousel.
    MASTER.md's testimonial pattern demands pause/stop controls, keyboard
@@ -12,7 +12,7 @@ export default function Testimonials() {
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{testimonials.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{testimonials.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={testimonials.title} /></h2>
           <span className="rule-gold mx-auto mt-6" aria-hidden="true" />
         </Reveal>
 

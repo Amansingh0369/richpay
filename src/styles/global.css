@@ -11,6 +11,12 @@
 @layer base {
   * { border-color: var(--color-line); }
 
+  /* Lenis does its own smoothing; leaving the native one on makes the two
+     fight and anchor jumps stutter. SmoothScroll toggles this class. */
+  html.lenis-active { scroll-behavior: auto; }
+  html.lenis-active,
+  html.lenis-active body { height: auto; }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem; /* sticky header offset for anchor links */

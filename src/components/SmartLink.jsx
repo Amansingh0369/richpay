@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 /* ============================================================================
    The site mixes three kinds of link and they need different handling once
@@ -14,17 +14,34 @@ import { Link, useLocation } from 'react-router-dom'
 
 const EXTERNAL = /^(https?:|mailto:|tel:|\/\/)/i
 
-export default function SmartLink({ to, children, ...rest }) {
+export default function SmartLink({ to, children, onClick, ...rest }) {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
 
-  if (!to || to === '#') return <a href="#" {...rest}>{children}</a>
-  if (EXTERNAL.test(to)) return <a href={to} {...rest}>{children}</a>
+  if (!to || to === '#') return <a href="#" onClick={onClick} {...rest}>{children}</a>
+  if (EXTERNAL.test(to)) return <a href={to} onClick={onClick} {...rest}>{children}</a>
 
   if (to.startsWith('#')) {
-    return pathname === '/'
-      ? <a href={to} {...rest}>{children}</a>
-      : <Link to={`/${to}`} {...rest}>{children}</Link>
+    if (pathname !== '/') return <Link to={`/${to}`} onClick={onClick} {...rest}>{children}</Link>
+    /* Already on the landing page. Let the router own the hash instead of the
+       browser: with Lenis driving the scroll, a native anchor jump lands
+       instantly and skips the smoothing entirely. Going through navigate()
+       hands it to ScrollManager, which scrolls via Lenis. */
+    return (
+      <a
+        href={to}
+        onClick={(e) => {
+          onClick?.(e)
+          if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
+          e.preventDefault()
+          navigate({ hash: to })
+        }}
+        {...rest}
+      >
+        {children}
+      </a>
+    )
   }
 
-  return <Link to={to} {...rest}>{children}</Link>
+  return <Link to={to} onClick={onClick} {...rest}>{children}</Link>
 }

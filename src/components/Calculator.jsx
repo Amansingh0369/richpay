@@ -1,7 +1,7 @@
 import { useId, useMemo, useState } from 'react'
 import { calculator as c } from '../data/content'
 import Icon from './Icons'
-import { Reveal, motion, useReducedMotion } from './motion'
+import { Reveal, motion, useReducedMotion, WordsUp } from './motion'
 
 const inr = (n) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n)
@@ -34,7 +34,7 @@ export default function Calculator() {
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{c.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{c.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={c.title} /></h2>
           <p className="lead mt-5">{c.sub}</p>
         </Reveal>
 

@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { hero } from '../data/content'
 import Icon from './Icons'
-import { motion, CountUp, useReducedMotion } from './motion'
+import { motion, CountUp, WordsUp, useReducedMotion } from './motion'
 
 /* ============================================================================
    Hero.
@@ -71,8 +71,8 @@ export default function Hero() {
             >
               {hero.headlineLines.map(({ lead, accent }) => (
                 <Fragment key={accent}>
-                  <span className="block">{lead}</span>
-                  <span className="block font-accent text-gold-gradient">{accent}</span>
+                  <span className="block"><WordsUp text={lead} amount={0.1} delay={0.05} /></span>
+                  <span className="block font-accent"><WordsUp text={accent} wordClassName="text-gold-gradient" amount={0.1} delay={0.16} /></span>
                 </Fragment>
               ))}
             </motion.h1>

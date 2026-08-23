@@ -1,5 +1,5 @@
 import { process } from '../data/content'
-import { Reveal, Group, Item, motion, useReducedMotion } from './motion'
+import { Reveal, Group, Item, motion, useReducedMotion, WordsUp } from './motion'
 
 export default function Process() {
   const reduce = useReducedMotion()
@@ -8,7 +8,7 @@ export default function Process() {
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{process.eyebrow}</span>
-          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{process.title}</h2>
+          <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={process.title} /></h2>
           <span className="rule-gold mx-auto mt-7" aria-hidden="true" />
         </Reveal>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
+import { getLenis } from './SmoothScroll'
 
 /* ============================================================================
    The browser only anchors/restores scroll on real document loads. With
@@ -24,8 +25,12 @@ export default function ScrollManager() {
     const samePage = prevPath.current === pathname
     prevPath.current = pathname
 
+    const lenis = getLenis()
+
     if (!hash) {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      // immediate:true jumps without animating, matching the old behaviour
+      if (lenis) lenis.scrollTo(0, { immediate: true })
+      else window.scrollTo({ top: 0, behavior: 'instant' })
       return
     }
 
@@ -38,7 +43,11 @@ export default function ScrollManager() {
     const raf1 = requestAnimationFrame(() => {
       raf2 = requestAnimationFrame(() => {
         const el = document.querySelector(hash)
-        if (el) el.scrollIntoView({ behavior, block: 'start' })
+        if (!el) return
+        // no manual offset: Lenis already honours html's scroll-padding-top (5.5rem),
+        // and adding one on top of it double-counts the header clearance
+        if (lenis) lenis.scrollTo(el, { immediate: behavior === 'instant' })
+        else el.scrollIntoView({ behavior, block: 'start' })
       })
     })
     return () => { cancelAnimationFrame(raf1); cancelAnimationFrame(raf2) }
