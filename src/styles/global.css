@@ -1,0 +1,413 @@
+/* ============================================================================
+   RichPay — GLOBAL STYLESHEET
+   Order matters: Tailwind first, then tokens (@theme), then base, then
+   reusable component classes built ONLY from tokens.
+   ========================================================================== */
+
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* ---------------------------------------------------------------- base ---- */
+@layer base {
+  * { border-color: var(--color-line); }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* sticky header offset for anchor links */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-sans);          /* Montserrat */
+    font-size: var(--text-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-ink);
+    font-family: var(--font-display);       /* Poppins */
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    text-wrap: balance;      /* prevents orphan heading lines */
+  }
+
+  p { text-wrap: pretty; }
+
+  /* Tabular numerals everywhere money appears — keeps ₹ columns aligned */
+  .tnum, table, [data-numeric] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Visible focus for keyboard nav — required by the design system */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  /* On light surfaces navy reads better than gold */
+  .on-light :focus-visible { outline-color: var(--color-navy); }
+
+  ::selection { background: var(--color-gold); color: var(--color-on-gold); }
+}
+
+/* ---------------------------------------------------------- components ---- */
+@layer components {
+
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) { .container-page { padding-inline: 2rem; } }
+
+  .section { padding-block: var(--spacing-section); }
+  @media (min-width: 768px) { .section { padding-block: var(--spacing-section-lg); } }
+
+  /* --- Buttons ----------------------------------------------------------
+     44px min touch target (WCAG target size). Gold button always carries
+     navy text — never white. */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-body);
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--dur-base) var(--ease-out),
+                color var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-gold {
+    background: var(--color-gold);
+    color: var(--color-on-gold);          /* 6.37:1 ✓ */
+    border: 1px solid var(--color-gold);
+  }
+  .btn-gold:hover { background: var(--color-gold-soft); border-color: var(--color-gold-soft); box-shadow: var(--shadow-gold); }
+
+  .btn-navy {
+    background: var(--color-navy);
+    color: var(--color-on-navy);
+    border: 1px solid var(--color-navy);
+  }
+  .btn-navy:hover { background: var(--color-navy-elevated); border-color: var(--color-navy-elevated); }
+
+  /* Outline on a LIGHT surface */
+  .btn-outline {
+    background: transparent;
+    color: var(--color-navy);
+    border: 1px solid var(--color-navy);
+  }
+  .btn-outline:hover { background: var(--color-navy); color: var(--color-on-navy); }
+
+  /* Outline on a NAVY surface */
+  .btn-outline-invert {
+    background: transparent;
+    color: var(--color-on-navy);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .btn-outline-invert:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--color-gold-soft); color: var(--color-gold-soft); }
+
+  /* --- Surfaces ---------------------------------------------------------- */
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out);
+  }
+  .card-hover:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+
+  .card-on-navy {
+    background: var(--color-navy-elevated);
+    border: 1px solid var(--color-navy-line);
+    border-radius: var(--radius-lg);
+  }
+
+  /* --- Type helpers ------------------------------------------------------ */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold-ink);          /* gold TEXT on light → ink ✓ */
+  }
+  .eyebrow-on-navy { color: var(--color-gold-soft); }  /* 9.77:1 ✓ */
+
+  .lead { font-size: var(--text-lead); color: var(--color-muted); }
+  .lead-on-navy { font-size: var(--text-lead); color: rgba(255,255,255,0.78); }
+
+  /* Gold underline accent borrowed from the logo's bridge arc */
+  .rule-gold {
+    display: block; width: 56px; height: 3px;
+    background: var(--color-gold);
+    border-radius: 2px;
+  }
+
+  /* --- Form controls ----------------------------------------------------- */
+  .field {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    background: var(--color-canvas);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    color: var(--color-ink);
+    font-size: var(--text-body);
+    transition: border-color var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(198, 154, 69, 0.22);
+  }
+
+  /* --- Range slider (loan calculator) ------------------------------------ */
+  .slider {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px;
+    background: var(--color-line);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 24px; height: 24px;
+    background: var(--color-gold);
+    border: 3px solid var(--color-canvas);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    cursor: grab;
+  }
+  .slider::-webkit-slider-thumb:active { cursor: grabbing; }
+  .slider::-moz-range-thumb {
+    width: 24px; height: 24px;
+    background: var(--color-gold);
+    border: 3px solid var(--color-canvas);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    cursor: grab;
+  }
+  .slider:focus-visible { outline: 2px solid var(--color-navy); outline-offset: 4px; }
+
+  /* --- Utility ----------------------------------------------------------- */
+  .skip-link {
+    position: absolute; left: 1rem; top: -100px;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-navy); color: var(--color-on-navy);
+    border-radius: var(--radius-md);
+    transition: top var(--dur-base) var(--ease-out);
+  }
+  .skip-link:focus { top: 1rem; }
+}
+
+/* ------------------------------------------------------------- motion ---- */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+}
+
+/* Respect the user's motion preference — non-negotiable in the design system */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+
+/* ============================================================================
+   DEPTH LAYER
+   The flat version read as "basic". These primitives add the layered, lit
+   quality the brand board asks for — built only from official tokens:
+   the Navy→Gold gradient, the gold arc, the dot grid, the growth bars.
+   ========================================================================== */
+@layer components {
+
+  /* --- Hero field: a single clean radial gradient -------------------------
+     Replaces the previous six-layer treatment (two radials + linear + grain +
+     dot grid + arc + parallax watermark), which read as busy rather than
+     premium. One gradient, no texture. */
+  .surface-hero {
+    position: relative;
+    background: var(--gradient-hero);
+    isolation: isolate;
+  }
+
+  /* --- Atmospheric navy: radial lights + falloff, not a flat fill -------- */
+  .surface-navy {
+    position: relative;
+    background:
+      radial-gradient(120% 90% at 78% 8%,  rgba(198,154,69,.20) 0%, transparent 55%),
+      radial-gradient(100% 80% at 12% 0%,  rgba(10,46,92,.95)  0%, transparent 60%),
+      linear-gradient(168deg, #0A2E5C 0%, #071F3D 46%, #04142A 100%);
+    isolation: isolate;
+  }
+  .surface-navy-soft {
+    background:
+      radial-gradient(90% 70% at 85% 0%, rgba(198,154,69,.13) 0%, transparent 58%),
+      linear-gradient(180deg, #071F3D 0%, #04142A 100%);
+  }
+
+  /* --- Grain: kills gradient banding, adds a printed-stock feel ---------- */
+  .grain::after {
+    content: '';
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  }
+
+  /* --- Official dot-grid brand element ---------------------------------- */
+  .dot-grid {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* --- Glass card on navy ----------------------------------------------- */
+  .glass {
+    /* Fallback first: opaque enough to stay legible with no backdrop-filter
+       (Firefox default, older Safari, headless capture). */
+    background: linear-gradient(150deg, rgba(19,52,92,.94) 0%, rgba(9,32,60,.94) 100%);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl), var(--shadow-inset-top);
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .glass {
+      /* CONTRAST: the wash is navy-tinted, not white. A white wash over the
+         hero's gold-lit navy lifted the panel background to ~rgb(68,86,104),
+         which dropped small light labels to 3.55:1 and gold-soft to 4.43:1 —
+         both under AA. Tinting navy keeps the panel at ~rgb(31,59,90), where
+         gold-soft is 6.9:1 and white/65 is 6.0:1. It also makes this branch
+         agree with the no-backdrop-filter fallback above instead of
+         contradicting it. */
+      background: linear-gradient(150deg, rgba(19,52,92,.58) 0%, rgba(7,31,61,.70) 100%);
+      backdrop-filter: blur(14px) saturate(1.25);
+      -webkit-backdrop-filter: blur(14px) saturate(1.25);
+    }
+  }
+
+  /* --- Light card with a lit top edge ----------------------------------- */
+  .card-lift {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Gold hairline that wipes in on hover — the logo's bridge arc, abstracted */
+  .card-lift::before {
+    content: '';
+    position: absolute; inset-inline: 0; top: 0; height: 2px;
+    background: var(--gradient-gold-line);
+    transform: scaleX(0);
+    transition: transform var(--dur-slow) var(--ease-expo);
+  }
+  .card-lift:hover::before { transform: scaleX(1); }
+
+  /* --- Gradient display text (white -> 72% white) ----------------------- */
+  .text-gradient {
+    background: var(--gradient-text-navy);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .text-gold-gradient {
+    background: linear-gradient(180deg, #E6C27A 0%, #C69A45 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+
+  /* --- Gold CTA with sheen ---------------------------------------------- */
+  .btn-gold {
+    background: linear-gradient(180deg, #D6AC58 0%, #C69A45 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255,255,255,.3) inset, var(--shadow-md);
+  }
+  .btn-gold::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.42) 50%, transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 620ms var(--ease-expo);
+  }
+  .btn-gold:hover::after { transform: translateX(120%); }
+  .btn-gold:hover { box-shadow: 0 1px 0 rgba(255,255,255,.3) inset, var(--shadow-gold); }
+
+  /* --- Eyebrow pill on navy --------------------------------------------- */
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .4375rem .875rem;
+    border-radius: 999px;
+    border: 1px solid rgba(230,194,122,.28);
+    background: rgba(198,154,69,.10);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--color-gold-soft);
+  }
+
+  /* Quiet variant for the hero only. The hero already spends gold on the
+     headline accent and the primary CTA; a third gold element competes with
+     both. Trust keeps the gold `.pill` — it is the only accent in that band. */
+  .pill-quiet {
+    border-color: rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    color: rgba(255,255,255,.78);          /* 7.7:1 on royal ✓ */
+  }
+
+  /* --- Section number/eyebrow on light ---------------------------------- */
+  .eyebrow { font-family: var(--font-display); }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  /* Hero emphasis words only. IBM Plex Serif runs optically smaller and tighter
+     than Poppins at the same size, so it gets a size nudge and looser tracking
+     to sit level with the line above it. */
+  .font-accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05em;
+    letter-spacing: -0.005em;
+  }
+  /* Optical fix: Poppins at display sizes needs negative tracking */
+  .tracking-display { letter-spacing: -0.035em; }
+}

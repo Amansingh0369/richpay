@@ -1,0 +1,120 @@
+/* ============================================================================
+   RichPay — DESIGN TOKENS  ·  SINGLE SOURCE OF TRUTH
+   ----------------------------------------------------------------------------
+   Values are the OFFICIAL ones from RichPay Brand Identity Guidelines v1.0
+   (May 2025), slides 04 (colour), 05 (typography), 07 (elements), 19 (usage).
+   Mirrored in design-system/richpay/MASTER.md.
+
+   CHANGE COLORS / FONTS / SPACING / MOTION HERE — nowhere else.
+   Tailwind v4 generates utilities from @theme (--color-navy -> bg-navy, etc).
+
+   ⚠️ CONTRAST CONTRACT — read before editing any gold value:
+      gold #C69A45 is 2.59:1 on white -> FAILS as text on light at ANY size.
+      · On light : gold is a FILL, with navy text on top (6.37:1 ✓)
+      · Gold text on light -> --color-gold-ink #8A6829 (5.13:1 ✓)
+      · On navy  : gold (6.37:1) and gold-soft (9.72:1) are safe for text
+      NEVER white text on a gold fill.
+   ========================================================================== */
+
+@theme {
+  /* ---- Primary palette (official) --------------------------------------- */
+  --color-navy: #071F3D;          /* Deep Navy — master brand               */
+  --color-royal: #0A2E5C;         /* Royal Blue — elevated navy surfaces    */
+  --color-gold: #C69A45;          /* Gold — fill on light, text on navy     */
+  --color-gold-soft: #E6C27A;     /* Light Gold — text/detail on navy       */
+  --color-gold-ink: #8A6829;      /* derived — gold TEXT on light surfaces  */
+  --color-canvas: #FFFFFF;
+  --color-body: #1F2328;          /* Charcoal — body copy · 15.80:1         */
+  --color-surface: #F1F5F9;       /* Light Grey — alternating bands         */
+
+  /* ---- Derived surface + text ------------------------------------------- */
+  --color-navy-deep: #04142A;     /* darker navy for gradient falloff       */
+  --color-navy-line: #17375F;     /* hairlines on navy                      */
+  --color-card: #FFFFFF;
+  --color-line: #E2E8F0;
+  --color-ink: #071F3D;           /* headings                               */
+  --color-muted: #55606E;         /* secondary text · 6.4:1 on white        */
+  --color-on-navy: #FFFFFF;
+  --color-on-gold: #071F3D;       /* never white                            */
+
+  /* ---- Status ----------------------------------------------------------- */
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+
+  /* ---- Secondary digital palette — RESTRICTED --------------------------- */
+  /* Instagram, campaign art, charts, UI states only. Never chrome or CTAs.  */
+  --color-blue: #2563EB;
+  --color-sky: #38BDF8;
+  --color-green: #16A34A;
+  --color-mint: #22C55E;
+
+  /* ---- Typography (official: Poppins + Montserrat) ---------------------- */
+  --font-display: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Accent face — the hero's two emphasis words only ("clarity" / "confidence").
+     IBM Plex Serif: the serif cut of the family the type data ranks as its
+     "Financial Trust" pairing (banks, finance, insurance, fintech). Institutional
+     rather than fashion-editorial, which is the register an NBFC needs.
+     ⚠️ DEVIATION: Brand Guidelines v1.0 slide 05 fixes the type system at
+     Poppins + Montserrat. Both are geometric sans, so switching between them at
+     display size reads as an error rather than emphasis; a serif is the only way
+     to make the emphasis legible as deliberate. Scoped to two words and nothing
+     else. Needs client sign-off — delete this token and the .font-accent rule
+     in global.css to revert. */
+  --font-accent: 'IBM Plex Serif', ui-serif, Georgia, 'Times New Roman', serif;
+
+  --text-hero: clamp(2.25rem, 1.45rem + 2.4vw, 3.25rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.035em;
+
+  --text-h2: clamp(2rem, 1.5rem + 2vw, 3.125rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.028em;
+
+  --text-h3: 1.25rem;   --text-h3--line-height: 1.3;  --text-h3--letter-spacing: -0.012em;
+  --text-lead: 1.1875rem; --text-lead--line-height: 1.65;
+  --text-body: 1rem;    --text-body--line-height: 1.7;
+  --text-small: 0.875rem; --text-small--line-height: 1.6;
+  --text-eyebrow: 0.75rem; --text-eyebrow--line-height: 1.4; --text-eyebrow--letter-spacing: 0.18em;
+
+  /* ---- Spacing ---------------------------------------------------------- */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8.5rem;
+
+  /* ---- Radius ----------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  /* ---- Elevation — layered, navy-tinted (not flat grey) ----------------- */
+  --shadow-sm: 0 1px 2px rgba(7,31,61,.05), 0 2px 6px rgba(7,31,61,.04);
+  --shadow-md: 0 2px 4px rgba(7,31,61,.04), 0 8px 20px rgba(7,31,61,.08);
+  --shadow-lg: 0 4px 8px rgba(7,31,61,.05), 0 18px 44px rgba(7,31,61,.13);
+  --shadow-xl: 0 8px 16px rgba(7,31,61,.06), 0 34px 80px rgba(7,31,61,.20);
+  --shadow-gold: 0 10px 30px rgba(198,154,69,.34);
+  --shadow-inset-top: inset 0 1px 0 rgba(255,255,255,.09);
+
+  /* ---- Official gradients ----------------------------------------------- */
+  /* Hero field: ONE radial gradient instead of a stack of decorative layers.
+     Deep navy core at top-centre falling off to royal at the outer edge.
+     All three stops are official/derived navies — no gold in the field, so the
+     gold CTA is the only accent competing for attention (landing pattern
+     "Trust & Authority": navy corporate base, accent for CTA only). */
+  --gradient-hero: radial-gradient(125% 125% at 50% 10%, #04142A 35%, #071F3D 62%, #0A2E5C 100%);
+
+  --gradient-navy-gold: linear-gradient(135deg, #071F3D 0%, #0A2E5C 45%, #C69A45 100%);
+  --gradient-gold-line: linear-gradient(90deg, transparent, #C69A45, transparent);
+  --gradient-text-navy: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,.72) 100%);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+  --ease-expo: cubic-bezier(.16,1,.3,1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 520ms;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container-page: 1200px;
+}
