@@ -626,3 +626,106 @@ export const refundCancellationPolicy = {
     { type: 'p', text: 'This Refund & Cancellation Policy shall be governed by and interpreted in accordance with the laws of India. Any disputes arising out of this Policy shall be subject to the exclusive jurisdiction of the courts located in New Delhi, India.' },
   ],
 }
+
+/* FAQ. Rendered as accordion groups; each item's answer is a list of the same
+   block types the policy pages use. Inline [label](/route) links are resolved
+   through SmartLink so cross-document links stay client-side. */
+export const faq = {
+  slug: 'faq',
+  eyebrow: 'Help',
+  title: 'Frequently Asked Questions',
+  sub: 'Everything you need to know about RichPay Fincorp loans, eligibility, charges, and repayment.',
+  updated: null,
+  metaTitle: 'FAQs — RichPay Fincorp',
+  metaDescription: 'Frequently asked questions about RichPay Fincorp loans, eligibility, interest rates, and repayment.',
+
+  blocks: [
+    { type: 'faq', category: 'General Questions', items: [
+      { q: '1. What is RichPay Fincorp?', a: [{ type: 'p', text: 'RichPay Fincorp is a digital lending platform that facilitates access to personal loan products offered in association with **Richpay Fincorp Private Limited** (Formerly Known As Malwa Leasing & Credits Private Limited), an RBI-registered Non-Banking Financial Company (NBFC).' }] },
+      { q: '2. Who can apply for a loan through RichPay Fincorp?', a: [{ type: 'p', text: 'Indian residents who meet the eligibility criteria prescribed by the lender may apply through the RichPay Fincorp website or mobile application.' }] },
+      { q: '3. Is RichPay Fincorp an RBI-registered NBFC?', a: [{ type: 'p', text: 'RichPay Fincorp is a digital lending platform. Loans are offered and serviced in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited), which is an RBI-registered NBFC.' }] },
+      { q: '4. Is the loan application process completely online?', a: [{ type: 'p', text: 'Yes. The entire process — including application, document submission, verification, approval, and disbursement — is designed to be completed digitally.' }] },
+    ] },
+
+    { type: 'faq', category: 'Loan Eligibility', items: [
+      { q: '5. What are the eligibility criteria for Short-Term Personal Loans?', a: [{ type: 'ul', items: ['Be at least 18 years of age', 'Be an Indian resident', 'Have a valid PAN and Aadhaar', 'Have a regular source of income', "Meet the lender's credit assessment criteria"] }] },
+      { q: '6. What are the eligibility criteria for Personal Loans?', a: [{ type: 'p', text: 'Eligibility is determined based on age, income, employment or business profile, credit history, existing obligations, and internal credit assessment.' }] },
+      { q: '7. Can self-employed individuals apply?', a: [{ type: 'p', text: 'Yes. Self-employed individuals may apply for Personal Loans subject to eligibility criteria and verification requirements.' }] },
+      { q: '8. Can salaried individuals apply?', a: [{ type: 'p', text: 'Yes. Salaried individuals may apply for both Short-Term Personal Loans and Personal Loans.' }] },
+    ] },
+
+    { type: 'faq', category: 'Loan Amount and Tenure', items: [
+      { q: '9. What is the minimum and maximum loan amount for Short-Term Personal Loans?', a: [{ type: 'p', text: '**Minimum:** ₹10,000 · **Maximum:** ₹2,00,000' }] },
+      { q: '10. What is the tenure for Short-Term Personal Loans?', a: [{ type: 'p', text: 'The loan tenure ranges from **7 days to 90 days**.' }] },
+      { q: '11. What is the minimum and maximum loan amount for Personal Loans?', a: [{ type: 'p', text: '**Minimum:** ₹50,000 · **Maximum:** ₹5,00,000' }] },
+      { q: '12. What is the tenure for Personal Loans?', a: [{ type: 'p', text: 'The tenure ranges from **3 months to 12 months**.' }] },
+      { q: '13. Will I always receive the amount I apply for?', a: [{ type: 'p', text: 'Not necessarily. The approved loan amount may vary depending on eligibility, credit assessment, income, and internal lending policies.' }] },
+    ] },
+
+    { type: 'faq', category: 'Interest Rate and Charges', items: [
+      { q: '14. What is the interest rate?', a: [{ type: 'p', text: "Interest rates may be **up to 24% per annum**, subject to the borrower's risk profile and lender assessment." }] },
+      { q: '15. Are there any processing fees?', a: [{ type: 'p', text: 'Yes. A processing fee may be charged at the time of loan disbursement. The applicable fee will be disclosed before loan acceptance.' }] },
+      { q: '16. Are there any hidden charges?', a: [{ type: 'p', text: 'No. All applicable charges are disclosed before the borrower accepts the loan offer.' }] },
+      { q: '17. Is GST applicable?', a: [{ type: 'p', text: 'Yes. Applicable taxes, including GST, may be charged on fees and charges as required by law.' }] },
+    ] },
+
+    { type: 'faq', category: 'Documents Required', items: [
+      { q: '18. What documents are required to apply?', a: [{ type: 'ul', items: ['PAN Card', 'Aadhaar Card', 'Bank Statements', 'Salary Slips', 'GST Documents (if applicable)', 'CKYC Information', 'Income Proof', 'Other supporting documents as required'] }] },
+      { q: '19. Why do you ask for bank statements?', a: [{ type: 'p', text: 'Bank statements help assess income patterns, repayment capacity, and overall financial profile.' }] },
+      { q: '20. Why is PAN mandatory?', a: [{ type: 'p', text: 'PAN is required for identity verification, KYC compliance, and regulatory reporting requirements.' }] },
+    ] },
+
+    { type: 'faq', category: 'Loan Processing and Disbursement', items: [
+      { q: '21. How long does approval take?', a: [{ type: 'p', text: 'Approval timelines may vary depending on verification requirements and eligibility assessment. Our platform is designed to process applications as quickly as possible.' }] },
+      { q: '22. How will I know if my loan is approved?', a: [{ type: 'p', text: 'You will be informed through SMS, email, mobile app notifications, or other registered communication channels.' }] },
+      { q: '23. How is the loan disbursed?', a: [{ type: 'p', text: "Approved loan amounts are generally transferred directly to the borrower's verified bank account." }] },
+      { q: '24. Can my application be rejected?', a: [{ type: 'p', text: 'Yes. Loan approval is subject to eligibility, verification, credit assessment, and internal risk policies. Submission of an application does not guarantee approval.' }] },
+    ] },
+
+    { type: 'faq', category: 'Repayment', items: [
+      { q: '25. How do I repay my loan?', a: [
+        { type: 'p', text: 'Repayment options may include:' },
+        { type: 'ul', items: ['UPI', 'Net Banking', 'Bank Transfer', 'Auto-Debit Mandates', 'Other approved payment methods'] },
+        { type: 'p', text: 'Available options will be communicated during the loan journey.' },
+      ] },
+      { q: '26. Can I repay before the due date?', a: [{ type: 'p', text: 'Yes. Early repayment is generally allowed, subject to the terms of the loan agreement.' }] },
+      { q: '27. Is foreclosure allowed?', a: [{ type: 'p', text: 'Yes. Borrowers may foreclose their loans subject to applicable terms and conditions.' }] },
+      { q: '28. What happens if I miss a repayment?', a: [
+        { type: 'p', text: 'Delayed payments may result in:' },
+        { type: 'ul', items: ['Penal charges', 'Collection efforts', 'Reporting to credit bureaus', 'Impact on future borrowing eligibility'] },
+      ] },
+      { q: '29. Will late payments affect my credit score?', a: [{ type: 'p', text: 'Yes. Delayed or missed repayments may adversely affect your credit profile and credit score.' }] },
+    ] },
+
+    { type: 'faq', category: 'Data Privacy and Security', items: [
+      { q: '30. Is my information safe?', a: [{ type: 'p', text: 'RichPay Fincorp uses reasonable security measures and safeguards to protect customer information. See our [Privacy Policy](/privacy-policy) for details.' }] },
+      { q: '31. Do you share my information with third parties?', a: [{ type: 'p', text: 'Information may be shared only for legitimate business purposes such as loan processing, KYC verification, credit assessment, regulatory compliance, and fraud prevention, as permitted by applicable laws.' }] },
+      { q: '32. Do you access my contacts or personal photos?', a: [{ type: 'p', text: 'No. RichPay Fincorp does not access personal contacts, photographs, videos, SMS content, or call logs for lending decisions.' }] },
+    ] },
+
+    { type: 'faq', category: 'Customer Support', items: [
+      { q: '33. How can I contact customer support?', a: [{ type: 'p', text: 'Email: [support@richpayfincorp.com](mailto:support@richpayfincorp.com)' }] },
+      { q: '34. How do I file a complaint?', a: [{ type: 'p', text: 'Write to: [grievance@richpayfincorp.com](mailto:grievance@richpayfincorp.com). Please include your registered mobile number and loan/application details for faster resolution. You can also visit our [Grievance Redressal](/grievance) page.' }] },
+      { q: '35. How long will it take to resolve my complaint?', a: [{ type: 'p', text: 'The Company strives to address complaints and grievances promptly in accordance with applicable regulatory requirements.' }] },
+    ] },
+
+    { type: 'faq', category: 'Security and Fraud Prevention', items: [
+      { q: '36. How can I protect myself from fraud?', a: [{ type: 'ul', items: ['Never share OTPs with anyone', 'Never share passwords or login credentials', 'Verify communications before making payments', 'Use only official RichPay Fincorp channels'] }] },
+      { q: '37. Will RichPay Fincorp ask for my OTP?', a: [{ type: 'p', text: '**No.** RichPay Fincorp representatives will never ask for your OTP, passwords, UPI PIN, or internet banking credentials.' }] },
+      { q: '38. What should I do if I suspect fraud?', a: [
+        { type: 'p', text: 'Immediately contact:' },
+        { type: 'ul', items: [
+          'Support: [support@richpayfincorp.com](mailto:support@richpayfincorp.com)',
+          'Grievance Officer: [grievance@richpayfincorp.com](mailto:grievance@richpayfincorp.com)',
+        ] },
+      ] },
+    ] },
+
+    { type: 'faq', category: 'Legal and Regulatory', items: [
+      { q: '39. Does submitting an application guarantee approval?', a: [{ type: 'p', text: 'No. Submission of an application does not guarantee loan approval. All applications are subject to verification and credit assessment.' }] },
+      { q: '40. Where is RichPay Fincorp located?', a: [{ type: 'p', text: 'Registered Office: Office No. 510, 5th Floor, Surya Kiran Building, K.G. Marg, Connaught Place, New Delhi – 110001' }] },
+      { q: '41. Are the terms and policies subject to change?', a: [{ type: 'p', text: 'Yes. RichPay Fincorp may update its policies, terms, and procedures from time to time in accordance with legal, regulatory, operational, or business requirements.' }] },
+      { q: '42. Where can I view the Terms, Privacy Policy, and Fair Practices Code?', a: [{ type: 'p', text: 'These documents are available on this website: [Privacy Policy](/privacy-policy), [Terms and Conditions](/terms), [Fair Practice Code](/fair-practice-code).' }] },
+    ] },
+  ],
+}

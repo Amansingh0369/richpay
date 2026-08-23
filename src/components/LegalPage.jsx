@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Icon from './Icons'
+import SmartLink from './SmartLink'
 
 /* ============================================================================
    Shell for legal / policy pages (privacy policy, terms, fair practice code…).
@@ -23,13 +24,26 @@ import Icon from './Icons'
    copy near 70 characters a line, inside the 65-75 the design system asks for. */
 const COLUMN = 'mx-auto w-full max-w-[44rem]'
 
-/** Renders **bold** spans inside otherwise plain copy. */
+/* Inline markup inside otherwise plain copy: **bold** and [label](href).
+   Internal hrefs go through SmartLink so cross-document links stay client-side. */
+const INLINE = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g
+const LINK_CLASS = 'font-medium text-[var(--color-ink)] underline decoration-[var(--color-gold)] decoration-2 underline-offset-2 transition-colors hover:text-[var(--color-gold-ink)] cursor-pointer'
+
 function renderInline(text) {
-  return text.split('**').map((part, i) =>
-    i % 2 === 1
-      ? <strong key={i} className="font-semibold text-[var(--color-ink)]">{part}</strong>
-      : <Fragment key={i}>{part}</Fragment>
-  )
+  return text.split(INLINE).map((part, i) => {
+    if (!part) return null
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="font-semibold text-[var(--color-ink)]">{part.slice(2, -2)}</strong>
+    }
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    if (m) {
+      const [, label, href] = m
+      return /^(mailto:|tel:|https?:)/.test(href)
+        ? <a key={i} href={href} className={`${LINK_CLASS} break-all`}>{label}</a>
+        : <SmartLink key={i} to={href} className={LINK_CLASS}>{label}</SmartLink>
+    }
+    return <Fragment key={i}>{part}</Fragment>
+  })
 }
 
 function Block({ block }) {
@@ -75,6 +89,31 @@ function Block({ block }) {
         </List>
       )
     }
+    case 'faq':
+      /* Native <details>/<summary>: keyboard-operable and announces its
+         expanded state with no JS and no ARIA wiring of our own. */
+      return (
+        <section className="mt-14 first:mt-0">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-gold-ink)]">
+            {block.category}
+          </h2>
+          <div className="mt-4 space-y-2.5">
+            {block.items.map((it) => (
+              <details key={it.q} className="group overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-line)] bg-[var(--color-surface)]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[0.9375rem] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--color-line)]/50 [&::-webkit-details-marker]:hidden">
+                  <span>{it.q}</span>
+                  <span aria-hidden="true" className="shrink-0 text-[var(--color-gold-ink)] transition-transform duration-200 group-open:rotate-180">
+                    <Icon name="chevron-down" size={18} />
+                  </span>
+                </summary>
+                <div className="px-5 pb-5 [&>*:first-child]:mt-0">
+                  {it.a.map((blk, j) => <Block key={j} block={blk} />)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )
     case 'note':
       // Closing acknowledgement — set apart from the numbered clauses above it.
       return (

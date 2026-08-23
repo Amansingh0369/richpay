@@ -263,7 +263,7 @@ export const footer = {
       { label: 'About', href: '#about' },
       { label: 'Customer Stories', href: '#testimonials' },
       { label: 'Trust & Security', href: '#trust' },
-      { label: 'FAQs' },
+      { label: 'FAQs', href: '/faq' },
     ] },
     { title: 'Legal', links: [
       { label: 'Privacy Policy', href: '/privacy-policy' },

@@ -29,6 +29,7 @@ export const Icon = ({ name, className = '', size = 24 }) => {
     case 'rupee': return <svg {...p}><path d="M6 3h12M6 8h12m-12 5 8.5 8M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/></svg>
     case 'menu': return <svg {...p}><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     case 'close': return <svg {...p}><path d="M6 6l12 12M18 6 6 18"/></svg>
+    case 'chevron-down': return <svg {...p}><path d="m6 9 6 6 6-6"/></svg>
     case 'chevron-left': return <svg {...p}><path d="m15 6-6 6 6 6"/></svg>
     case 'chevron-right': return <svg {...p}><path d="m9 6 6 6-6 6"/></svg>
     case 'pause': return <svg {...p}><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>

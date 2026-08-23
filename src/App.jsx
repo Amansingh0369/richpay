@@ -7,6 +7,7 @@ import FairPracticeCode from './pages/FairPracticeCode'
 import InterestRatePolicy from './pages/InterestRatePolicy'
 import Grievance from './pages/Grievance'
 import RefundCancellationPolicy from './pages/RefundCancellationPolicy'
+import Faq from './pages/Faq'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/interest-rate-policy" element={<InterestRatePolicy />} />
         <Route path="/refund-cancellation-policy" element={<RefundCancellationPolicy />} />
         <Route path="/grievance" element={<Grievance />} />
+        <Route path="/faq" element={<Faq />} />
         {/* Unknown paths fall back to the landing page rather than a dead end */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
