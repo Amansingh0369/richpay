@@ -37,6 +37,10 @@ export default function SmoothScroll() {
         wheelMultiplier: 0.9,
       })
       instance = lenis
+      // Exposed for debugging and for test tooling: Lenis re-asserts its own
+      // target every frame, so a raw window.scrollTo is reverted before
+      // anything downstream can observe it.
+      window.__lenis = lenis
       document.documentElement.classList.add('lenis-active')
       const loop = (t) => { lenis.raf(t); raf = requestAnimationFrame(loop) }
       raf = requestAnimationFrame(loop)
@@ -47,6 +51,7 @@ export default function SmoothScroll() {
       lenis.destroy()
       lenis = null
       instance = null
+      delete window.__lenis
       document.documentElement.classList.remove('lenis-active')
     }
 
