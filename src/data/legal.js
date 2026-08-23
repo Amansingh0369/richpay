@@ -354,3 +354,123 @@ export const fairPracticeCode = {
     { type: 'note', text: 'This Fair Practices Code shall come into force with immediate effect and shall apply to all lending activities facilitated through RichPay Fincorp in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited).' },
   ],
 }
+
+export const interestRatePolicy = {
+  slug: 'interest-rate-policy',
+  eyebrow: 'Legal',
+  title: 'Interest Rate Policy',
+  sub: 'RichPay Fincorp — In Association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited)',
+  updated: 'June 2026',
+  metaTitle: 'Interest Rate Policy | RichPay FinCorp',
+  metaDescription: 'Interest rate policy, fee structure, and pricing methodology of RichPay FinCorp in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited).',
+
+  blocks: [
+    { type: 'h2', text: '1. Introduction' },
+    { type: 'p', text: 'RichPay Fincorp operates as a digital lending platform in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited) ("Company"), an RBI-registered Non-Banking Financial Company (NBFC).' },
+    { type: 'p', text: 'This Interest Rate Policy has been formulated in accordance with applicable RBI guidelines and the Fair Practices Code adopted by the Company. The objective of this Policy is to establish transparent principles and procedures for determining interest rates, processing fees, penal charges, and other applicable charges on loan products offered through RichPay Fincorp.' },
+    { type: 'p', text: 'This Policy shall be available on the website and mobile applications of RichPay Fincorp for information of customers and the general public.' },
+
+    { type: 'h2', text: '2. Objective of the Policy' },
+    { type: 'p', text: 'The objectives of this Policy are:' },
+    { type: 'ol', items: [
+      'To ensure transparency in pricing of loan products.',
+      'To establish a risk-based approach for determining interest rates.',
+      'To communicate the methodology used for charging interest and other fees.',
+      'To ensure compliance with applicable RBI regulations and Fair Practices Code requirements.',
+      'To promote responsible lending and fair treatment of borrowers.',
+    ] },
+
+    { type: 'h2', text: '3. Loan Products Covered' },
+    { type: 'p', text: 'This Policy applies to the following products offered through RichPay Fincorp:' },
+    { type: 'h3', text: 'A. Short-Term Personal Loans' },
+    { type: 'ul', items: [
+      { term: 'Loan Amount:', text: '₹10,000 to ₹2,00,000', dash: false },
+      { term: 'Tenure:', text: '7 days to 90 days', dash: false },
+      { term: 'Eligible Borrowers:', text: 'Salaried Individuals', dash: false },
+    ] },
+    { type: 'h3', text: 'B. Personal Loans' },
+    { type: 'ul', items: [
+      { term: 'Loan Amount:', text: '₹50,000 to ₹5,00,000', dash: false },
+      { term: 'Tenure:', text: '3 months to 12 months', dash: false },
+      { term: 'Eligible Borrowers:', text: 'Salaried and Self-Employed Individuals', dash: false },
+    ] },
+
+    { type: 'h2', text: '4. Interest Rate Model' },
+    { type: 'p', text: 'The Company follows a risk-based pricing model while determining interest rates. Interest rates are determined after considering various factors, including:' },
+    { type: 'h3', text: 'Cost Factors' },
+    { type: 'ul', items: ['Cost of Borrowed Funds', 'Cost of Capital', 'Operating Expenses', 'Technology and Infrastructure Costs', 'Compliance Costs'] },
+    { type: 'h3', text: 'Risk Factors' },
+    { type: 'ul', items: ['Credit Score and Credit History', 'Repayment Behaviour', 'Existing Debt Obligations', 'Income Stability and Employment Profile', 'Business Stability', 'Banking Behaviour', 'Loan Amount and Loan Tenure', 'Fraud Risk Assessment'] },
+    { type: 'h3', text: 'Market Factors' },
+    { type: 'ul', items: ['Prevailing Market Conditions', 'Industry Trends', 'Competitive Environment', 'Regulatory Requirements'] },
+
+    { type: 'h2', text: '5. Interest Rate Range' },
+    { type: 'p', text: "The applicable Annual Percentage Rate (APR) for loans offered through RichPay Fincorp may vary depending upon the borrower's risk profile." },
+    { type: 'ul', items: [
+      { term: 'Short-Term Personal Loan:', text: 'Up to 24% per annum (APR)', dash: false },
+      { term: 'Personal Loan:', text: 'Up to 24% per annum (APR)', dash: false },
+    ] },
+    { type: 'p', text: 'The actual rate offered to a borrower may be lower depending on eligibility and internal risk assessment. The final interest rate applicable to each loan shall be disclosed in the Key Fact Statement (KFS), Sanction Letter, Loan Agreement, and other relevant documents before loan acceptance.' },
+
+    { type: 'h2', text: '6. Risk-Based Pricing' },
+    { type: 'p', text: 'Different borrowers may be charged different interest rates based on their risk profile. The following factors may influence the rate offered:' },
+    { type: 'ul', items: ['Credit Bureau Score', 'Credit History and Past Repayment Performance', 'Income Level and Employer Category', 'Employment Stability', 'Business Vintage', 'Existing Financial Obligations', 'Banking Track Record', 'Loan Amount Requested and Loan Tenure', 'Internal Risk Assessment'] },
+    { type: 'p', text: 'A borrower with a stronger credit profile may receive a lower rate than a borrower presenting higher credit risk.' },
+
+    { type: 'h2', text: '7. Processing Fee' },
+    { type: 'p', text: 'The Company may charge a processing fee for evaluating and processing loan applications.' },
+    { type: 'ul', items: [
+      { term: 'Processing Fee:', text: 'Up to 10% of the sanctioned loan amount plus applicable taxes.', dash: false },
+      'The exact processing fee shall be disclosed to the borrower prior to loan acceptance.',
+      'Processing fees may be deducted from the loan amount at the time of disbursement.',
+    ] },
+
+    { type: 'h2', text: '8. Other Charges' },
+    { type: 'p', text: 'Depending on the product and circumstances, the following charges may apply:' },
+    { type: 'ul', items: ['Processing Fee', 'Documentation Charges (if applicable)', 'Payment Gateway Charges (if applicable)', 'Bank Return Charges', 'ECS/NACH Bounce Charges', 'Legal Expenses (where applicable)', 'Collection Expenses (where permitted by law)', 'Taxes as prescribed by applicable laws'] },
+    { type: 'p', text: 'All applicable charges shall be disclosed prior to loan disbursement.' },
+
+    { type: 'h2', text: '9. Penal Charges' },
+    { type: 'p', text: 'In the event of non-payment or delayed payment of dues, penal charges may be levied.' },
+    { type: 'ul', items: [
+      { term: 'Penal Charges:', text: 'Up to 3% per month on overdue amounts.', dash: false },
+      'Penal charges shall not be capitalized.',
+      'Applied only in accordance with applicable RBI guidelines and the loan agreement.',
+      'Borrowers shall be informed regarding penal charges through loan documents and repayment schedules.',
+    ] },
+
+    { type: 'h2', text: '10. Foreclosure and Prepayment' },
+    { type: 'p', text: 'Borrowers may prepay or foreclose their loans before the scheduled maturity date.' },
+    { type: 'ul', items: [
+      { term: 'Foreclosure Facility:', text: 'Permitted subject to terms specified in the loan agreement.', dash: false },
+      'Any applicable conditions shall be disclosed to the borrower before loan acceptance.',
+    ] },
+
+    { type: 'h2', text: '11. Communication of Interest Rates' },
+    { type: 'p', text: 'The Company shall clearly communicate the following to borrowers:' },
+    { type: 'ul', items: ['Interest Rate and Annual Percentage Rate (APR)', 'Processing Fee', 'Penal Charges', 'Foreclosure Conditions', 'Repayment Obligations', 'Total Cost of Credit'] },
+    { type: 'p', text: 'Such disclosures shall be made through:' },
+    { type: 'ul', items: ['Key Fact Statement (KFS)', 'Loan Agreement', 'Sanction Letter', 'Website and Mobile Application'] },
+    { type: 'p', text: 'No hidden charges shall be imposed on borrowers.' },
+
+    { type: 'h2', text: '12. Revision of Interest Rates' },
+    { type: 'p', text: 'The Company reserves the right to revise interest rates and charges from time to time based on:' },
+    { type: 'ul', items: ['Cost of Funds', 'Market Conditions', 'Business Considerations', 'Regulatory Changes', 'Risk Assessment Framework'] },
+    { type: 'p', text: 'Such revisions shall apply prospectively unless otherwise required by law.' },
+
+    { type: 'h2', text: '13. Transparency Commitment' },
+    { type: 'p', text: 'RichPay Fincorp is committed to maintaining complete transparency in pricing. The Company shall ensure:' },
+    { type: 'ul', items: ['Fair and transparent disclosures.', 'No hidden charges.', 'Clear communication of APR.', 'Disclosure of all fees before loan acceptance.', 'Availability of pricing information on the website and mobile applications.'] },
+
+    { type: 'h2', text: '14. Grievance Redressal' },
+    { type: 'p', text: 'For any questions relating to interest rates, charges, fees, or loan pricing, customers may contact:' },
+    { type: 'contact', groups: [
+      { label: 'Support Email', rows: [{ kind: 'email', value: 'support@richpayfincorp.com' }] },
+      { label: 'Grievance Officer', rows: [{ kind: 'email', value: 'grievance@richpayfincorp.com' }] },
+      { label: 'Registered Office', rows: [{ kind: 'address', value: ['Office No. 510, 5th Floor, Surya Kiran Building, K.G. Marg, Connaught Place, New Delhi – 110001'] }] },
+    ] },
+
+    { type: 'h2', text: '15. Review of Policy' },
+    { type: 'p', text: 'This Policy shall be reviewed periodically and may be amended from time to time to ensure compliance with applicable laws, RBI regulations, and business requirements. The latest version shall always be available on the RichPay Fincorp website and mobile applications.' },
+  ],
+}

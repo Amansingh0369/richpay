@@ -269,7 +269,7 @@ export const footer = {
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Fair Practice Code', href: '/fair-practice-code' },
-      { label: 'Interest Rate Policy' },
+      { label: 'Interest Rate Policy', href: '/interest-rate-policy' },
       { label: 'Refund & Cancellation Policy' },
       { label: 'Grievance Redressal' },
     ] },

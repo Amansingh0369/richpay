@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Terms from './pages/Terms'
 import FairPracticeCode from './pages/FairPracticeCode'
+import InterestRatePolicy from './pages/InterestRatePolicy'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/fair-practice-code" element={<FairPracticeCode />} />
+        <Route path="/interest-rate-policy" element={<InterestRatePolicy />} />
         {/* Unknown paths fall back to the landing page rather than a dead end */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

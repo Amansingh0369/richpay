@@ -49,25 +49,32 @@ function Block({ block }) {
     case 'p':
       return <p className="mt-4 leading-[1.8] text-[var(--color-muted)]">{renderInline(block.text)}</p>
     case 'ul':
+    case 'ol': {
+      const ordered = block.type === 'ol'
+      const List = ordered ? 'ol' : 'ul'
       return (
-        <ul className="mt-4 space-y-2.5">
+        <List className={`mt-4 space-y-2.5 ${ordered ? 'list-decimal pl-6 marker:font-semibold marker:text-[var(--color-gold-ink)]' : ''}`}>
           {block.items.map((it, i) => {
             const isTerm = typeof it === 'object'
-            return (
+            const body = isTerm ? (
+              <>
+                <strong className="font-semibold text-[var(--color-ink)]">{it.term}</strong>
+                {it.dash === false ? ' ' : ' — '}
+                {renderInline(it.text)}
+              </>
+            ) : renderInline(it)
+            return ordered ? (
+              <li key={i} className="pl-1 leading-[1.8] text-[var(--color-muted)]">{body}</li>
+            ) : (
               <li key={i} className="relative pl-6 leading-[1.8] text-[var(--color-muted)]">
                 <span aria-hidden="true" className="absolute left-0 top-[0.72em] h-1.5 w-1.5 rounded-full bg-[var(--color-gold)]" />
-                {isTerm ? (
-                  <>
-                    <strong className="font-semibold text-[var(--color-ink)]">{it.term}</strong>
-                    {it.dash === false ? ' ' : ' — '}
-                    {renderInline(it.text)}
-                  </>
-                ) : renderInline(it)}
+                {body}
               </li>
             )
           })}
-        </ul>
+        </List>
       )
+    }
     case 'note':
       // Closing acknowledgement — set apart from the numbered clauses above it.
       return (
