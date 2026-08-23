@@ -567,3 +567,62 @@ export const grievanceRedressal = {
     ] },
   ],
 }
+
+export const refundCancellationPolicy = {
+  slug: 'refund-cancellation-policy',
+  eyebrow: 'Legal',
+  title: 'Refund & Cancellation Policy',
+  sub: 'Our transparent policy on loan cancellations, refunds, and non-refundable charges.',
+  updated: 'June 2026',
+  metaTitle: 'Refund & Cancellation Policy — RichPay Fincorp',
+  metaDescription: "RichPay Fincorp's terms for loan cancellation, refunds, and non-refundable charges.",
+
+  blocks: [
+    { type: 'p', text: 'RichPay Fincorp (“RichPay”, “we”, “our”, or “us”), operating in association with **Richpay Fincorp Private Limited** (Formerly Known As Malwa Leasing & Credits Private Limited) (“Lender”), aims to provide transparent, fair, and customer-centric financial services. This Refund and Cancellation Policy outlines the conditions under which you may cancel a loan request and seek a refund of any payments made. By availing our services, you agree to the terms described below.' },
+
+    { type: 'h2', text: '1. Pre-Disbursement Cancellation' },
+    { type: 'p', text: 'If your loan has been approved but not yet disbursed, you may request cancellation without any charges. In such cases, no loan account will be activated, and no charges will be levied.' },
+
+    { type: 'h2', text: '2. Post-Disbursement Cancellation' },
+    { type: 'p', text: 'If you wish to cancel the loan after disbursement, you must:' },
+    { type: 'ul', items: [
+      'Notify RichPay Fincorp customer support within 24 hours of disbursement.',
+      'Repay the entire principal amount disbursed to your account.',
+    ] },
+    { type: 'p', text: 'Please note: processing charges, convenience fees, or statutory charges (if any) already deducted at the time of disbursal are non-refundable.' },
+
+    { type: 'h2', text: '3. Refund of Excess Payments' },
+    { type: 'ul', items: [
+      'Any excess or duplicate payments made by you (e.g., additional EMI, double debit, or system error) will be verified and refunded within 5–7 business days after reconciliation.',
+      'Refunds will be made only to the same bank account from which the payment was originally received.',
+    ] },
+
+    { type: 'h2', text: '4. Non-Refundable Charges' },
+    { type: 'p', text: 'The following charges are strictly non-refundable once incurred:' },
+    { type: 'ul', items: [
+      'Processing fees',
+      'Convenience or platform fees',
+      'Statutory charges (e.g., GST, stamp duty, or mandate registration costs)',
+      'Penalties or late payment charges, if applicable',
+    ] },
+
+    { type: 'h2', text: '5. How to Raise a Cancellation or Refund Request' },
+    { type: 'p', text: 'You may raise your request by contacting us at the details below. All requests will be processed subject to verification of your loan account details.' },
+
+    { type: 'h2', text: '6. Legal & Regulatory Compliance' },
+    { type: 'p', text: 'This policy is in line with applicable RBI guidelines governing NBFCs and digital lending practices. RichPay Fincorp reserves the right to update or amend this policy from time to time. Updated versions shall be published on the website and mobile applications.' },
+
+    { type: 'h2', text: '7. Final Note' },
+    { type: 'p', text: 'Uninstalling or deleting the RichPay Fincorp mobile application does not cancel your loan obligations. You remain responsible for repaying the sanctioned loan and any dues as per your Loan Agreement.' },
+
+    { type: 'h2', text: '8. Contact Us' },
+    { type: 'contact', groups: [
+      { label: 'Grievance Officer', rows: [{ kind: 'email', value: 'grievance@richpayfincorp.com' }] },
+      { label: 'Customer Support', rows: [{ kind: 'email', value: 'support@richpayfincorp.com' }] },
+      { label: 'Registered Office', rows: [{ kind: 'address', value: ['RichPay Fincorp', 'Office No. 510, 5th Floor, Surya Kiran Building', 'K.G. Marg, Connaught Place, New Delhi – 110001'] }] },
+    ] },
+
+    { type: 'h2', text: '9. Governing Law' },
+    { type: 'p', text: 'This Refund & Cancellation Policy shall be governed by and interpreted in accordance with the laws of India. Any disputes arising out of this Policy shall be subject to the exclusive jurisdiction of the courts located in New Delhi, India.' },
+  ],
+}

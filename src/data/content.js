@@ -270,7 +270,7 @@ export const footer = {
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Fair Practice Code', href: '/fair-practice-code' },
       { label: 'Interest Rate Policy', href: '/interest-rate-policy' },
-      { label: 'Refund & Cancellation Policy' },
+      { label: 'Refund & Cancellation Policy', href: '/refund-cancellation-policy' },
       { label: 'Grievance Redressal', href: '/grievance' },
     ] },
   ],
