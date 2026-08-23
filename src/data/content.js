@@ -265,52 +265,59 @@ export const testimonials = {
 }
 
 export const about = {
-  eyebrow: 'About RichPay',
+  eyebrow: 'Our story',
   title: 'Clarity was always the missing piece',
   body: [
-    'RichPay Fincorp Private Limited, formerly known as Malwa Leasing & Credits Private Limited, is registered as an NBFC, Investment & Credit Company (NBFC-ICC) with the Reserve Bank of India.',
-    'RichPay is a technology-driven digital lender offering unsecured personal loans across approximately 450 cities and towns in India.',
+    'RichPay Fincorp Private Limited (formerly known as Malwa Leasing & Credits Private Limited) is registered as an NBFC – Investment & Credit Company (NBFC-ICC) with the Reserve Bank of India. RichPay Fincorp Private Limited (formerly known as Malwa Leasing & Credits Private Limited) started retail operations under the brand name “RichPay” in June 2026.',
+    'We are a technology-driven NBFC and operate as a ‘Digital Lender’ offering unsecured personal loans to individuals spread across 450 cities / towns across the country.',
+    'Our vision is to become one of India’s most trusted digital lending platforms — making credit accessible, affordable, transparent, and customer-centric. We bridge the gap between traditional financial services and the evolving needs of today’s borrowers through innovative technology and responsible lending.',
   ],
-  vision: {
-    title: 'Vision',
-    body: "To become one of India's most trusted digital lending platforms by making credit accessible, affordable, transparent and customer-centric.",
-  },
   mission: {
-    title: 'Mission',
-    body: 'Provide fast, hassle-free access to credit, with full transparency, privacy protection, and compliance with RBI guidelines.',
+    title: 'Our Mission',
+    body: 'Provide fast, hassle-free access to credit — with full transparency, privacy protection, and compliance with RBI guidelines.',
   },
+  valuesTitle: 'What we stand for',
   values: [
-    { title: 'Transparency', body: 'All charges disclosed upfront. No fine print, no surprises.' },
-    { title: 'Responsibility', body: 'Lending based on repayment capacity, not just eligibility.' },
-    { title: 'Speed', body: 'Fully digital application, verification and funding.' },
-    { title: 'Inclusion', body: 'Credit access for salaried and self-employed Indians across the country.' },
+    { title: 'Transparency', body: 'All charges disclosed upfront — no fine print, no surprises.' },
+    { title: 'Responsibility', body: 'We lend based on repayment capacity, not just eligibility.' },
+    { title: 'Speed', body: 'Fully digital — apply, verify, and receive funds fast.' },
+    { title: 'Inclusion', body: 'Credit for salaried and self-employed Indians across the country.' },
   ],
+  contactTitle: 'Get in Touch',
+  partner: {
+    title: 'RBI-Registered NBFC Partner',
+    body: 'Operated in association with RichPay Fincorp Private Limited (formerly known as Malwa Leasing & Credits Private Limited) — fully compliant with the RBI Fair Practices Code.',
+  },
 }
 
 export const numbers = {
   eyebrow: 'By the numbers',
   title: 'Momentum you can measure',
   items: [
-    { value: '₹25 Cr+', label: 'Credit facilitated' },
-    { value: '34,000+', label: 'Borrowers served' },
-    { value: '15 min', label: 'Average approval time' },
-    { value: '100%', label: 'Digital process' },
+    { value: '₹25Cr+', label: 'Credit Facilitated' },
+    { value: '34,000+', label: 'Borrowers Served' },
+    { value: '15 min', label: 'Avg. Approval Time' },
+    { value: '100%', label: 'Digital Process' },
   ],
 }
 
-/* ⚠️ BLOCKED — the client's source document contradicts itself:
-   About says the RichPay retail brand launched June 2026, while this timeline
-   says founded 2021. The source doc explicitly warns: "Don't publish both
-   narratives as-is." Rendering is gated behind SHOW_JOURNEY until the client
-   confirms the real dates. Everything else on the page is unaffected. */
-export const SHOW_JOURNEY = false
+/* ⚠️ UNRECONCILED, AND NOW PUBLISHED — turned on by request.
+   The client's source document contradicts itself and this has NOT been fixed:
+   the About copy above says retail operations under the RichPay brand started
+   in June 2026, while this timeline says founded 2021, 500 loans by 2022 and
+   34,000+ borrowers by 2024. Those cannot both be true — a lender cannot have
+   served 34,000 borrowers two years before it began retail operations. The
+   source doc's own warning was "Don't publish both narratives as-is."
+   For an RBI-registered NBFC this is a misleading-advertising exposure, not a
+   copy nit. Set SHOW_JOURNEY back to false, or fix the dates, before launch. */
+export const SHOW_JOURNEY = true
 export const journey = {
   eyebrow: 'Our journey',
   title: 'How we got here',
   items: [
-    { year: '2021', title: 'Founded', body: 'RichPay Fincorp launched with a mission to make personal lending fast and transparent.' },
-    { year: '2022', title: 'First 500 loans', body: 'Reached 500 approved loans within the first year.' },
-    { year: '2024', title: '34,000+ borrowers', body: 'Over ₹25 Cr facilitated and 34,000+ borrowers served across India.' },
+    { year: '2021', title: 'Founded', body: 'RichPay FinCorp launched with a mission to make personal lending fast and transparent.' },
+    { year: '2022', title: 'First 500 Loans', body: 'Reached 500 approved loans within the first year of operations.' },
+    { year: '2024', title: '34,000+ Borrowers', body: 'Over ₹25Cr facilitated. 34,000+ borrowers served across India.' },
   ],
 }
 
