@@ -29,7 +29,7 @@ export default function Why() {
   return (
     <section id="why" className="section bg-[var(--color-surface)]">
       <div className="container-page">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{why.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{why.title}</h2>
           <p className="lead mt-6">{why.sub}</p>

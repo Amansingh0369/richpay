@@ -6,10 +6,10 @@ export default function Process() {
   return (
     <section id="process" className="section bg-[var(--color-canvas)]">
       <div className="container-page">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{process.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{process.title}</h2>
-          <span className="rule-gold mt-7" aria-hidden="true" />
+          <span className="rule-gold mx-auto mt-7" aria-hidden="true" />
         </Reveal>
 
         <Group as="ol" className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7" gap={0.11}>

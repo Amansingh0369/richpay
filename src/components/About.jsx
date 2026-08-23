@@ -39,7 +39,7 @@ export default function About() {
 
         {/* ---- By the numbers ---- */}
         <div className="mt-16 pt-14 border-t border-[var(--color-line)]">
-          <Reveal className="max-w-2xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">{numbers.eyebrow}</span>
             <h2 className="mt-4 text-[1.75rem] md:text-[2rem]">{numbers.title}</h2>
           </Reveal>
@@ -60,7 +60,7 @@ export default function About() {
             Flip SHOW_JOURNEY in src/data/content.js once confirmed. */}
         {SHOW_JOURNEY && (
           <div className="mt-16 pt-14 border-t border-[var(--color-line)]">
-            <Reveal className="max-w-2xl">
+            <Reveal className="mx-auto max-w-2xl text-center">
               <span className="eyebrow">{journey.eyebrow}</span>
               <h2 className="mt-4 text-[1.75rem] md:text-[2rem]">{journey.title}</h2>
             </Reveal>

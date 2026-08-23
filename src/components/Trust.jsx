@@ -10,10 +10,10 @@ export default function Trust() {
       </svg>
 
       <div className="container-page relative">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="pill">{trust.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08] text-white">{trust.title}</h2>
-          <span className="rule-gold mt-6" aria-hidden="true" />
+          <span className="rule-gold mx-auto mt-6" aria-hidden="true" />
         </Reveal>
 
         <Group className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3" gap={0.1}>

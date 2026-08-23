@@ -6,7 +6,7 @@ export default function Products() {
   return (
     <section id="products" className="section bg-[var(--color-canvas)]">
       <div className="container-page">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{products.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{products.title}</h2>
           <p className="lead mt-5">{products.sub}</p>

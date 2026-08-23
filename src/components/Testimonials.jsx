@@ -10,10 +10,10 @@ export default function Testimonials() {
   return (
     <section id="stories" className="section bg-[var(--color-canvas)]">
       <div className="container-page">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">{testimonials.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]">{testimonials.title}</h2>
-          <span className="rule-gold mt-6" aria-hidden="true" />
+          <span className="rule-gold mx-auto mt-6" aria-hidden="true" />
         </Reveal>
 
         <Group className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2" gap={0.09}>
