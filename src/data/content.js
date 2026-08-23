@@ -204,6 +204,11 @@ export const trust = {
   ],
 }
 
+/* PLACEHOLDER COPY. None of these are real customers. Before this site goes
+   live they must be replaced with genuine, consented quotes — an RBI-registered
+   NBFC publishing invented customer testimonials is misleading advertising, not
+   just a content gap. Kept deliberately free of rate figures and approval
+   promises so nothing here contradicts the product pages. */
 export const testimonials = {
   eyebrow: 'Customer stories',
   title: 'Real people, real results',
@@ -223,6 +228,38 @@ export const testimonials = {
     {
       name: 'Vikram Nair', role: 'Teacher', city: 'Chennai', amount: '₹1,00,000', initials: 'VN',
       quote: 'Unexpected medical bills are stressful enough. Having a clear repayment plan from day one mattered.'
+    },
+    {
+      name: 'Kavita Reddy', role: 'Staff Nurse', city: 'Hyderabad', amount: '₹45,000', initials: 'KR',
+      quote: 'The repayment schedule was mailed to me before I signed, so I knew every due date well before the school term started.'
+    },
+    {
+      name: 'Sandeep Yadav', role: 'Fleet Owner', city: 'Lucknow', amount: '₹4,50,000', initials: 'SY',
+      quote: 'Being self-employed, I expected a pile of questions. Sharing my returns and bank statements was enough to get the working capital I needed.'
+    },
+    {
+      name: 'Meera Krishnan', role: 'Dentist', city: 'Kochi', amount: '₹2,75,000', initials: 'MK',
+      quote: 'I closed the loan four months early after a good quarter — there was no penalty for paying ahead.'
+    },
+    {
+      name: 'Imran Sheikh', role: 'Electrician', city: 'Ahmedabad', amount: '₹25,000', initials: 'IS',
+      quote: 'The clutch in my work van gave out before a big wiring job. The money reached my account the same evening and I met the deadline.'
+    },
+    {
+      name: 'Sneha Banerjee', role: 'HR Manager', city: 'Kolkata', amount: '₹1,75,000', initials: 'SB',
+      quote: 'I finished the whole application from my phone during a work trip. No branch visit, no courier, no printouts to sign.'
+    },
+    {
+      name: 'Harpreet Singh', role: 'Auto Parts Dealer', city: 'Ludhiana', amount: '₹3,25,000', initials: 'HS',
+      quote: 'I called twice with questions about my EMI date, and the same person picked up both times and explained everything patiently.'
+    },
+    {
+      name: 'Deepak Sahu', role: 'Logistics Supervisor', city: 'Bhubaneswar', amount: '₹60,000', initials: 'DS',
+      quote: 'After my bonus came through in March, I foreclosed the loan online in a few clicks and got the closure letter by email.'
+    },
+    {
+      name: 'Tanvi Joshi', role: 'Freelance Photographer', city: 'Indore', amount: '₹85,000', initials: 'TJ',
+      quote: 'The processing fee and every charge were listed on one screen before I accepted — I saved a screenshot for my records.'
     },
   ],
 }

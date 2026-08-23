@@ -50,7 +50,7 @@ export default function Trust() {
 
       <div className="container-page relative">
         <Reveal className="mx-auto max-w-5xl text-center">
-          <span className="pill">{trust.eyebrow}</span>
+          <span className="eyebrow eyebrow-on-navy">{trust.eyebrow}</span>
           {/* One line from md up; the wrapper widens with it. Still wraps on a
               phone rather than shrinking below readable. */}
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08] text-white md:whitespace-nowrap">

@@ -474,6 +474,10 @@
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
+  /* Second row runs the other way. Direction only — same keyframes, so both
+     rows stay in step and share one animation. */
+  .marquee-track-reverse { animation-direction: reverse; }
+
   /* Reduced motion: no travel at all, just the static first run of items. */
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none; transform: none; }
