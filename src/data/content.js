@@ -322,18 +322,88 @@ export const journey = {
 }
 
 export const mobile = {
-  eyebrow: 'Mobile experience',
+  eyebrow: 'Mobile first',
   title: 'Same clarity, anywhere.',
-  sub: 'Everything you can do on the web, in your pocket.',
+  sub: 'Check rates, apply, and track your loan from any device. The RichPay experience is fully mobile-optimised.',
   features: [
-    'Check rates before you apply',
-    'Apply for loans in minutes',
-    'Track loan status in real time',
-    'View EMI schedules months ahead',
-    'One-tap support — chat, call or email',
-    'Biometric security with Face ID and fingerprint',
+    { title: 'Instant loan status', body: 'Real-time updates on your application and disbursement.' },
+    { title: 'Clear EMI schedule', body: 'See every payment date and amount, months in advance.' },
+    { title: 'One-tap support', body: 'Chat, call, or email — support is always a tap away.' },
+    { title: 'Biometric security', body: 'Face ID and fingerprint login for instant, secure access.' },
   ],
-  storeNote: 'Coming soon',
+  storeNote: 'Coming soon on',
+  /* Illustrative in-app screen. Not a real account and not live data — the
+     component describes it as an example for assistive tech rather than
+     announcing the figures as fact. */
+  app: {
+    brand: 'RichPay',
+    greeting: 'Good morning, Priya',
+    loanLabel: 'Active loan',
+    amount: '₹3,00,000',
+    emiLabel: 'EMI',
+    emi: '₹13,500 / month',
+    repaidLabel: 'Repaid',
+    repaidPct: 40,
+    actions: ['Pay EMI', 'Statement', 'Support'],
+    activityTitle: 'Recent Activity',
+    activity: [
+      { title: 'EMI Paid', date: '1 Jun', amount: '−₹13,500', kind: 'out' },
+      { title: 'Disbursed', date: '3 May', amount: '+₹3,00,000', kind: 'in' },
+    ],
+    /* Sub-screens behind the quick actions and the tab bar. All dummy — see the
+       note above. No figure here is a quoted rate or a promised timeline. */
+    screens: {
+      pay: {
+        title: 'Pay EMI',
+        headline: 'Next instalment',
+        amount: '₹13,500',
+        due: 'Due 1 Jul 2026',
+        rows: [
+          ['Principal', '₹11,270'],
+          ['Interest', '₹2,230'],
+          ['Instalment', '5 of 24'],
+        ],
+        methodLabel: 'Payment method',
+        method: 'HDFC Bank •••• 4412',
+        cta: 'Pay ₹13,500',
+        note: 'Example screen — no payment is taken here.',
+      },
+      statement: {
+        title: 'Statement',
+        period: 'June 2026',
+        rows: [
+          ['1 Jun', 'EMI paid', '−₹13,500'],
+          ['1 May', 'EMI paid', '−₹13,500'],
+          ['3 May', 'Loan disbursed', '+₹3,00,000'],
+          ['2 May', 'Processing fee', '−₹2,500'],
+        ],
+        summary: [
+          ['Repaid to date', '₹1,20,000'],
+          ['Outstanding', '₹1,80,000'],
+        ],
+      },
+      support: {
+        title: 'Support',
+        options: [
+          { icon: 'chat', title: 'Chat with us', body: 'Mon to Sat, 10am – 7pm' },
+          { icon: 'phone', title: '+91-93556-00811', body: 'Speak to the team' },
+          { icon: 'mail', title: 'support@richpayfincorp.com', body: 'Written queries and documents' },
+        ],
+        note: 'Grievance escalation details are on the website.',
+      },
+      profile: {
+        title: 'Profile',
+        name: 'Priya Sharma',
+        initials: 'PS',
+        member: 'Customer since May 2026',
+        rows: [
+          ['Mobile', '+91 98••• ••210'],
+          ['Email', 'p•••••@email.com'],
+          ['KYC', 'Verified'],
+        ],
+      },
+    },
+  },
 }
 
 export const finalCta = {
