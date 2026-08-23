@@ -2,6 +2,8 @@ import { Fragment } from 'react'
 import { hero } from '../data/content'
 import Icon from './Icons'
 import { motion, CountUp, WordsUp, useReducedMotion } from './motion'
+import HeroStarfield from './HeroStarfield'
+import HeroProofCard from './HeroProofCard'
 
 /* ============================================================================
    Hero.
@@ -51,22 +53,38 @@ export default function Hero() {
 
   return (
     <section id="top" className="surface-hero relative overflow-hidden pt-32 pb-20 md:pt-36 md:pb-24">
+      {/* WebGL starfield. .surface-hero's CSS gradient stays on the section as
+          the fallback for reduced motion and for devices without WebGL. */}
+      <HeroStarfield />
+
+      {/* Legibility scrim, between the shader and the content.
+          The shader is generative: a noise ridge can drift anywhere, and at its
+          brightest the field reaches ~rgb(96,100,94). White text survives that
+          (6.0:1) but the gold accent words fall to 2.33:1. Rather than dim the
+          whole effect, this holds the left column — where the headline lives —
+          near navy and lets the shader breathe on the right, behind the card,
+          which carries its own opaque surface anyway. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            'linear-gradient(100deg, rgba(4,20,42,.90) 0%, rgba(4,20,42,.86) 30%, rgba(4,20,42,.58) 58%, rgba(4,20,42,.34) 100%)',
+        }}
+      />
+
       <div className="container-page relative z-10">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
 
           {/* ---------- Left: the pitch ---------- */}
           <motion.div className="lg:col-span-7" {...container}>
-            <motion.span className="pill pill-quiet" {...item}>
-              <Icon name="shield" size={14} /> {hero.eyebrow}
-            </motion.span>
-
             {/* Four hard lines — lead, emphasis, lead, emphasis. Each emphasis
                 word gets its own line so the serif reads as a deliberate beat
                 rather than an inline substitution. Leading is a touch looser
                 than a sans-only stack would need, to clear the serif descenders
                 in "clarity" and "confidence". */}
             <motion.h1
-              className="mt-7 font-display text-[clamp(2rem,1.3rem+2.2vw,3rem)] font-semibold leading-[1.1] tracking-display text-white"
+              className="font-display text-[clamp(2rem,1.3rem+2.2vw,3rem)] font-semibold leading-[1.1] tracking-display text-white"
               {...item}
             >
               {hero.headlineLines.map(({ lead, accent }) => (
@@ -105,6 +123,13 @@ export default function Hero() {
                 </div>
               ))}
             </motion.dl>
+
+            {/* Credential line. No pill, no border — it belongs with the other
+                trust signals rather than above the headline. */}
+            <motion.p className="mt-6 flex items-center gap-2 text-[0.8125rem] text-white/60" {...item}>
+              <Icon name="shield" size={14} className="text-white/45" />
+              {hero.eyebrow}
+            </motion.p>
           </motion.div>
 
           {/* ---------- Right: one proof panel ---------- */}
@@ -114,86 +139,7 @@ export default function Hero() {
             animate={reduce ? false : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
           >
-            <motion.div
-              className="glass mx-auto max-w-md p-6 md:p-7 lg:mx-0 lg:max-w-none"
-              whileHover={reduce ? undefined : { y: -4 }}
-              transition={{ duration: 0.3, ease: EASE }}
-            >
-              <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold-soft)]">
-                  <span className="relative flex h-2 w-2" aria-hidden="true">
-                    {!reduce && (
-                      <motion.span
-                        className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-success)]"
-                        animate={{ scale: [1, 2.4, 1], opacity: [0.7, 0, 0.7] }}
-                        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeOut' }}
-                      />
-                    )}
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-success)]" />
-                  </span>
-                  {card.label}
-                </span>
-                <span className="text-xs text-white/65">{card.meta}</span>
-              </div>
-
-              <div className="mt-6 flex items-center gap-4">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-white/8 text-white/80 ring-1 ring-inset ring-white/12">
-                  <Icon name="rupee" size={22} />
-                </span>
-                <span className="min-w-0">
-                  <span data-numeric className="block font-display text-[clamp(1.75rem,1.1rem+2vw,2.375rem)] font-semibold leading-none tracking-display text-white">
-                    {card.amount}
-                  </span>
-                  <span className="mt-1.5 block text-[0.8125rem] leading-snug text-white/65">{card.caption}</span>
-                </span>
-              </div>
-
-              <div className="mt-7 space-y-2.5">
-                <div className="flex items-baseline justify-between text-[0.8125rem]">
-                  <span className="text-white/65">{card.progressLabel}</span>
-                  <span data-numeric className="font-semibold text-white">{card.steps.length} of {card.steps.length}</span>
-                </div>
-                <div
-                  className="h-1.5 w-full overflow-hidden rounded-full bg-white/10"
-                  role="progressbar" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100}
-                  aria-label={card.progressLabel}
-                >
-                  <motion.div
-                    className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-gold),var(--color-gold-soft))]"
-                    initial={reduce ? false : { width: '0%' }}
-                    animate={reduce ? false : { width: '100%' }}
-                    style={reduce ? { width: '100%' } : undefined}
-                    transition={{ duration: 1.1, ease: EASE, delay: 0.8 }}
-                  />
-                </div>
-              </div>
-
-              <ul className="mt-6 space-y-3">
-                {card.steps.map((step, i) => (
-                  <motion.li
-                    key={step} className="flex items-center gap-3"
-                    initial={reduce ? false : { opacity: 0, x: -8 }}
-                    animate={reduce ? false : { opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, ease: EASE, delay: 0.55 + i * 0.09 }}
-                  >
-                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-success)]/16 text-[var(--color-success)]">
-                      <Icon name="check" size={14} />
-                    </span>
-                    <span className="text-sm text-white/85">{step}</span>
-                  </motion.li>
-                ))}
-              </ul>
-
-              {/* Trust row — was a second floating panel; folded in as a hairline footer */}
-              <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2.5 border-t border-white/10 pt-5">
-                {trustStrip.items.map((t) => (
-                  <span key={t.text} className="inline-flex items-center gap-2 text-[0.75rem] text-white/72">
-                    <Icon name={t.icon} size={14} className="text-white/50" />
-                    {t.text}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            <HeroProofCard />
           </motion.div>
         </div>
       </div>

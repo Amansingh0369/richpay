@@ -66,7 +66,7 @@ export const hero = {
   // Panel 1 of the hero's right-hand stack — an illustrative approval.
   approvalCard: {
     label: 'Approved',
-    amount: '₹2,50,000',
+    amount: '2,50,000',
     meta: 'Under 15 min',
     caption: 'Personal loan · disbursed to bank account',
     progressLabel: 'Application progress',
@@ -187,14 +187,22 @@ export const testimonials = {
   eyebrow: 'Customer stories',
   title: 'Real people, real results',
   items: [
-    { name: 'Priya Sharma', role: 'Graphic Designer', city: 'Mumbai', amount: '₹3,00,000', initials: 'PS',
-      quote: 'I saw the full cost upfront — no fine print surprises. The studio setup was funded in 18 hours.' },
-    { name: 'Rohit Gupta', role: 'Software Engineer', city: 'Bangalore', amount: '₹1,50,000', initials: 'RG',
-      quote: 'During a medical emergency the last thing I needed was confusion. The clarity on interest rates made the decision easy.' },
-    { name: 'Anita Desai', role: 'Small Business Owner', city: 'Pune', amount: '₹2,00,000', initials: 'AD',
-      quote: 'My bakery oven broke down on a Tuesday. Same-day access and transparent charges got me running again.' },
-    { name: 'Vikram Nair', role: 'Teacher', city: 'Chennai', amount: '₹1,00,000', initials: 'VN',
-      quote: 'Unexpected medical bills are stressful enough. Having a clear repayment plan from day one mattered.' },
+    {
+      name: 'Priya Sharma', role: 'Graphic Designer', city: 'Mumbai', amount: '₹3,00,000', initials: 'PS',
+      quote: 'I saw the full cost upfront — no fine print surprises. The studio setup was funded in 18 hours.'
+    },
+    {
+      name: 'Rohit Gupta', role: 'Software Engineer', city: 'Bangalore', amount: '₹1,50,000', initials: 'RG',
+      quote: 'During a medical emergency the last thing I needed was confusion. The clarity on interest rates made the decision easy.'
+    },
+    {
+      name: 'Anita Desai', role: 'Small Business Owner', city: 'Pune', amount: '₹2,00,000', initials: 'AD',
+      quote: 'My bakery oven broke down on a Tuesday. Same-day access and transparent charges got me running again.'
+    },
+    {
+      name: 'Vikram Nair', role: 'Teacher', city: 'Chennai', amount: '₹1,00,000', initials: 'VN',
+      quote: 'Unexpected medical bills are stressful enough. Having a clear repayment plan from day one mattered.'
+    },
   ],
 }
 
@@ -275,25 +283,31 @@ export const footer = {
   // `href` is optional. Entries without one have no route yet and render as an
   // inert '#'. SmartLink decides how each href is navigated.
   columns: [
-    { title: 'Products', links: [
-      { label: 'Personal Loan', href: '#products' },
-      { label: 'Short Term Loan', href: '#products' },
-      { label: 'Emergency Loan', href: '#products' },
-    ] },
-    { title: 'Company', links: [
-      { label: 'About', href: '#about' },
-      { label: 'Customer Stories', href: '#testimonials' },
-      { label: 'Trust & Security', href: '#trust' },
-      { label: 'FAQs', href: '/faq' },
-    ] },
-    { title: 'Legal', links: [
-      { label: 'Privacy Policy', href: '/privacy-policy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Fair Practice Code', href: '/fair-practice-code' },
-      { label: 'Interest Rate Policy', href: '/interest-rate-policy' },
-      { label: 'Refund & Cancellation Policy', href: '/refund-cancellation-policy' },
-      { label: 'Grievance Redressal', href: '/grievance' },
-    ] },
+    {
+      title: 'Products', links: [
+        { label: 'Personal Loan', href: '#products' },
+        { label: 'Short Term Loan', href: '#products' },
+        { label: 'Emergency Loan', href: '#products' },
+      ]
+    },
+    {
+      title: 'Company', links: [
+        { label: 'About', href: '#about' },
+        { label: 'Customer Stories', href: '#testimonials' },
+        { label: 'Trust & Security', href: '#trust' },
+        { label: 'FAQs', href: '/faq' },
+      ]
+    },
+    {
+      title: 'Legal', links: [
+        { label: 'Privacy Policy', href: '/privacy-policy' },
+        { label: 'Terms of Service', href: '/terms' },
+        { label: 'Fair Practice Code', href: '/fair-practice-code' },
+        { label: 'Interest Rate Policy', href: '/interest-rate-policy' },
+        { label: 'Refund & Cancellation Policy', href: '/refund-cancellation-policy' },
+        { label: 'Grievance Redressal', href: '/grievance' },
+      ]
+    },
   ],
   disclaimer:
     'All loans are subject to eligibility, credit assessment and regulatory requirements. RichPay Fincorp Private Limited is a registered NBFC-ICC with the Reserve Bank of India.',

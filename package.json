@@ -13,7 +13,8 @@
     "motion": "^13.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.2",
+    "three": "^0.143.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
