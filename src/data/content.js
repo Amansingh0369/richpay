@@ -147,13 +147,45 @@ export const calculator = {
   eyebrow: 'Loan calculator',
   title: 'Know your repayment, instantly',
   sub: 'Move the sliders to see exactly what you would pay back.',
-  amount: { min: 10000, max: 200000, step: 5000, default: 50000 },
-  tenure: { min: 7, max: 90, step: 1, default: 30 },
-  rate: { min: 0.24, max: 1, step: 0.01, default: 0.5 },
-  claims: ['Fully digital', 'No hidden charges', 'Disbursement in hours', 'Foreclosure allowed'],
-  // Required regulatory disclosure — do not remove.
+  // Required regulatory disclosure — do not remove. Each product appends its
+  // own method line to this in the UI.
   disclosure:
-    'This calculation uses flat simple interest and is indicative only. Actual charges are disclosed before acceptance and remain subject to eligibility and credit assessment.',
+    'Actual charges are disclosed before acceptance and remain subject to eligibility and credit assessment.',
+
+  /* Two products, two different interest methods — this is the whole reason the
+     calculator has a switch:
+       · short-term runs FLAT simple interest per day (P x r x days)
+       · personal runs a REDUCING-BALANCE EMI per month
+
+     NOTE: these ranges come from the calculator spec and do NOT match the
+     Products section on the same page, which states 3-12 months and up to
+     24% p.a. for the Personal Loan. 6%/month is 60% p.a. and 36 months is
+     three years. Two different sets of terms for one product need reconciling.
+  */
+  products: [
+    {
+      id: 'short-term',
+      label: 'Short-Term Loan',
+      caption: 'Short Term Loan / Emergency',
+      method: 'flat',
+      amount: { min: 10000, max: 200000, step: 5000, default: 50000 },
+      tenure: { min: 7, max: 90, step: 1, default: 30, unit: 'days', label: 'Tenure (Days)' },
+      rate: { min: 0.24, max: 1, step: 0.01, default: 0.5, per: 'day', label: 'Interest Rate / day' },
+      headline: 'Total payable',
+      claims: ['Fully digital', 'No hidden charges', 'Disbursement in hours', 'Foreclosure allowed'],
+    },
+    {
+      id: 'personal',
+      label: 'Personal Loan',
+      caption: 'Salaried & Self-Employed',
+      method: 'emi',
+      amount: { min: 50000, max: 500000, step: 10000, default: 200000 },
+      tenure: { min: 3, max: 36, step: 1, default: 12, unit: 'months', label: 'Tenure' },
+      rate: { min: 1.5, max: 6, step: 0.1, default: 1.5, per: 'month', label: 'Interest Rate / month' },
+      headline: 'Monthly EMI',
+      claims: ['Salaried & self-employed', 'No prepayment penalty', 'Transparent pricing', 'Fast approval'],
+    },
+  ],
 }
 
 export const trust = {

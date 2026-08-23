@@ -225,10 +225,16 @@
   }
 
   /* --- Range slider (loan calculator) ------------------------------------ */
+  /* --fill is set inline as a percentage by the component, so the track shows
+     how far along the range the thumb is. Falls back to an empty track. */
   .slider {
     -webkit-appearance: none; appearance: none;
     width: 100%; height: 6px;
-    background: var(--color-line);
+    background: linear-gradient(
+      to right,
+      var(--color-gold) 0%, var(--color-gold) var(--fill, 0%),
+      var(--color-line) var(--fill, 0%), var(--color-line) 100%
+    );
     border-radius: 999px;
     cursor: pointer;
   }
