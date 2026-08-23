@@ -1,13 +1,7 @@
-import { footer, company } from '../data/content'
+import { footer, company, social } from '../data/content'
 import Icon from './Icons'
 import SmartLink from './SmartLink'
 import logo from '../assets/logo-richpay-invert.png'
-
-const social = [
-  { name: 'LinkedIn', icon: 'linkedin', href: '#linkedin' },
-  { name: 'Instagram', icon: 'instagram', href: '#instagram' },
-  { name: 'X', icon: 'x', href: '#x' },
-]
 
 export default function Footer() {
   return (
@@ -42,7 +36,9 @@ export default function Footer() {
                 <li key={s.name}>
                   <a
                     href={s.href}
-                    aria-label={s.name}
+                    aria-label={`${s.name} — opens in a new tab`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-white/12 text-white/75 hover:text-[var(--color-gold-soft)] hover:border-[var(--color-gold)] transition-colors cursor-pointer"
                   >
                     <Icon name={s.icon} size={18} />

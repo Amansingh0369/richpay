@@ -18,6 +18,13 @@ export const company = {
   cities: '450+',
 }
 
+/* Only the X profile is a real, published account. LinkedIn and Instagram were
+   placeholder '#' links here and point at bare site roots on the live site, so
+   they are omitted rather than shipped as dead icons. */
+export const social = [
+  { name: 'X', icon: 'x', href: 'https://x.com/richpay_finance' },
+]
+
 export const nav = [
   { label: 'How it works', href: '#process' },
   { label: 'Products', href: '#products' },
