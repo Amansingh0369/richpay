@@ -101,7 +101,7 @@ export default function Header() {
             className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 lg:flex"
           >
             {nav.map((item) => (
-              <SmartLink key={item.href} to={item.href} className="nav-link">
+              <SmartLink key={item.href} to={item.href} aria-label={item.aria} className="nav-link">
                 {item.label}
               </SmartLink>
             ))}
@@ -191,6 +191,7 @@ export default function Header() {
                 >
                   <SmartLink
                     to={item.href}
+                    aria-label={item.aria}
                     onClick={() => setOpen(false)}
                     className="block cursor-pointer py-2.5 font-display text-[clamp(1.75rem,8vw,2.5rem)] font-semibold leading-tight tracking-display text-white transition-colors hover:text-[var(--color-gold-soft)]"
                   >

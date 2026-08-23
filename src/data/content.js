@@ -33,12 +33,18 @@ export const portal = {
   repay: 'Repay',
 }
 
+/* Header navigation. Deliberately three items, matching the live site.
+   Contact Us is a mailto, so it carries its own accessible name — "Contact Us"
+   alone gives no warning that activating it launches a mail client.
+   The address comes from `company` so there is one source of truth for it. */
 export const nav = [
-  { label: 'How it works', href: '#process' },
-  { label: 'Products', href: '#products' },
-  { label: 'Calculator', href: '#calculator' },
-  { label: 'Trust & Security', href: '#trust' },
-  { label: 'About', href: '#about' },
+  { label: 'Home', href: '#top' },
+  { label: 'About Us', href: '#about' },
+  {
+    label: 'Contact Us',
+    href: `mailto:${company.email}`,
+    aria: `Contact Us — email ${company.email}`,
+  },
 ]
 
 export const hero = {
