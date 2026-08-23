@@ -85,7 +85,7 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
           scrolled
-            ? 'bg-[var(--color-navy)]/88 backdrop-blur-xl shadow-[var(--shadow-lg)] border-b border-white/10'
+            ? 'bg-[var(--color-navy)] shadow-[var(--shadow-lg)] border-b border-white/10'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
@@ -167,11 +167,12 @@ export default function Header() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            /* Rendered OUTSIDE <header> on purpose. The header uses
-               backdrop-filter once scrolled, and backdrop-filter makes an
-               element a containing block for its position:fixed descendants —
-               so nested here, `inset-0` resolved against the header's 80px bar
-               and the menu collapsed to an invisible sliver. */
+            /* Rendered OUTSIDE <header> on purpose. This panel uses
+               backdrop-filter, and backdrop-filter makes an element a
+               containing block for its position:fixed descendants — nested in
+               a header that also filtered, `inset-0` resolved against the 80px
+               bar and the menu collapsed to an invisible sliver. The header is
+               opaque now, but the placement stays deliberate. */
             className="fixed inset-0 z-40 bg-[var(--color-navy)]/70 backdrop-blur-2xl lg:hidden"
             initial={reduce ? false : { opacity: 0 }}
             animate={reduce ? false : { opacity: 1 }}
