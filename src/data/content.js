@@ -98,7 +98,7 @@ export const process = {
 export const why = {
   eyebrow: 'Why RichPay',
   title: 'Built differently, for you.',
-  sub: 'The core brand philosophy is simple: the borrower comes first.',
+  sub: 'Every product decision at RichPay starts with one question: is this good for the borrower?',
   items: [
     // `featured` promotes an item to the bento's large navy tile.
     { title: 'Transparent pricing', body: 'Every fee, rate and charge is shown upfront. No surprises at disbursement.', icon: 'receipt', featured: true },
