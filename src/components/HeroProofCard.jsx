@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMotionTemplate, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { useAnimationFrame, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { hero } from '../data/content'
 import Icon from './Icons'
 import { motion, useReducedMotion } from './motion'
@@ -64,8 +64,27 @@ export default function HeroProofCard() {
   const spring = { stiffness: 150, damping: 18, mass: 0.6 }
   const rotateY = useSpring(useTransform(mx, [0, 1], [-6, 6]), spring)
   const rotateX = useSpring(useTransform(my, [0, 1], [5, -5]), spring)
-  const lift = useSpring(useTransform(hovered, [0, 1], [0, -10]), spring)
-  const glareOpacity = useSpring(hovered, { stiffness: 120, damping: 24 })
+
+  /* `hoverAmt` is the smoothed 0..1 hover state. Everything that needs to fade
+     between resting and hovered reads from it, so the two never fight. */
+  const hoverAmt = useSpring(hovered, { stiffness: 120, damping: 24 })
+  const lift = useTransform(hoverAmt, [0, 1], [0, -10])
+  const glareOpacity = hoverAmt
+
+  /* Resting levitation: a sine bob in place, scaled by (1 - hoverAmt) so the
+     pointer arriving hands control to the tilt without a jump, and leaving
+     hands it back.
+
+     ±13px over a ~4.5s cycle. The first pass ran ±7px over 9.4s, which works
+     out to about 1.5px a second — below the speed at which the eye reads
+     something as moving at all, so it looked static. Slow float still needs
+     enough travel per second to register. */
+  const bob = useMotionValue(0)
+  useAnimationFrame((t) => {
+    if (reduce) return
+    bob.set(Math.sin(t / 720) * 13 * (1 - hoverAmt.get()))
+  })
+  const y = useTransform([bob, lift], ([b, l]) => b + l)
   const gx = useTransform(mx, (v) => `${v * 100}%`)
   const gy = useTransform(my, (v) => `${v * 100}%`)
   const glare = useMotionTemplate`radial-gradient(320px circle at ${gx} ${gy}, rgba(255,255,255,0.16), rgba(255,255,255,0.05) 38%, transparent 65%)`
@@ -91,7 +110,7 @@ export default function HeroProofCard() {
       onPointerMove={onMove}
       onPointerEnter={onEnter}
       onPointerLeave={onLeave}
-      style={reduce ? undefined : { rotateX, rotateY, y: lift, transformPerspective: 1200 }}
+      style={reduce ? undefined : { rotateX, rotateY, y, transformPerspective: 1200 }}
       className="glass glass-deep relative mx-auto max-w-md p-6 md:p-7 lg:mx-0 lg:max-w-none"
     >
       {/* Glare follows the cursor across the surface. */}
