@@ -474,3 +474,96 @@ export const interestRatePolicy = {
     { type: 'p', text: 'This Policy shall be reviewed periodically and may be amended from time to time to ensure compliance with applicable laws, RBI regulations, and business requirements. The latest version shall always be available on the RichPay Fincorp website and mobile applications.' },
   ],
 }
+
+/* NOTE: this page introduces a SECOND phone number, +91-93556-00223, for the
+   Grievance Redressal Officer. It appears nowhere else on the site — `company.phone`
+   in content.js is the main support line, +91-93556-00811. Both are reproduced
+   here exactly as published; do not collapse them into one. */
+export const grievanceRedressal = {
+  slug: 'grievance',
+  eyebrow: 'Legal',
+  title: 'Grievance Redressal',
+  sub: 'We are committed to resolving every customer concern fairly, transparently, and within applicable timelines.',
+  updated: null,
+  metaTitle: 'Grievance Redressal — RichPay Fincorp',
+  metaDescription: 'Raise a complaint or grievance with RichPay Fincorp. We resolve all concerns fairly and promptly.',
+
+  blocks: [
+    { type: 'p', text: 'RichPay Fincorp takes customer grievances seriously. If you have a complaint, query, or concern related to our loan products or services, please follow the process below to ensure prompt resolution.' },
+
+    { type: 'h2', text: 'Step 1 — Contact Customer Support' },
+    { type: 'p', text: 'For any query, complaint, or service request, reach out to our customer support team first:' },
+    { type: 'contact', groups: [
+      { label: 'Customer Support', rows: [
+        { kind: 'email', value: 'support@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00811' },
+        { kind: 'note', value: 'Please include your registered mobile number and loan or application reference number for faster resolution.' },
+      ] },
+    ] },
+    { type: 'p', text: 'Our support team will acknowledge your complaint and endeavor to resolve it within a reasonable timeframe in accordance with applicable regulatory requirements.' },
+
+    { type: 'h2', text: 'Step 2 — Escalate to Grievance Officer' },
+    { type: 'p', text: 'If your complaint is not resolved to your satisfaction through customer support, you may escalate it to our Grievance Redressal Officer:' },
+    { type: 'contact', groups: [
+      { label: 'Grievance Redressal Officer', rows: [
+        { kind: 'email', value: 'grievance@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00223' },
+      ] },
+      { label: 'Registered Office', rows: [
+        { kind: 'address', value: ['RichPay Fincorp', 'Office No. 510, 5th Floor, Surya Kiran Building', 'K.G. Marg, Connaught Place, New Delhi – 110001'] },
+      ] },
+    ] },
+    { type: 'p', text: 'All escalated grievances shall be acknowledged and addressed within applicable regulatory timelines.' },
+
+    { type: 'h2', text: 'Step 3 — Regulatory Escalation' },
+    { type: 'p', text: "If you remain dissatisfied after exhausting the internal grievance mechanism, you may approach the appropriate regulatory authority as permitted under applicable laws, including the Reserve Bank of India's complaint mechanisms." },
+
+    { type: 'h2', text: 'What to Include in Your Complaint' },
+    { type: 'p', text: 'To help us resolve your concern efficiently, please provide:' },
+    { type: 'ul', items: [
+      'Full name and registered mobile number',
+      'Loan or application reference number (if applicable)',
+      'Clear description of the issue or complaint',
+      'Details of any prior communication with our support team',
+      'Supporting documents (if applicable)',
+    ] },
+
+    { type: 'h2', text: 'Our Commitments' },
+    { type: 'ul', items: [
+      'All complaints will be acknowledged promptly.',
+      'We will investigate each complaint fairly and impartially.',
+      'We will communicate our findings and resolution clearly.',
+      'We will not discriminate against any complainant.',
+      'All information shared will be kept confidential.',
+    ] },
+
+    { type: 'h2', text: 'Fraud and Security Concerns' },
+    { type: 'p', text: 'If you suspect fraud or unauthorized activity related to your account or application, contact us immediately:' },
+    { type: 'contact', groups: [
+      { label: 'Support', rows: [
+        { kind: 'email', value: 'support@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00811' },
+      ] },
+      { label: 'Grievance Officer', rows: [
+        { kind: 'email', value: 'grievance@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00223' },
+      ] },
+    ] },
+    { type: 'p', text: '**Important:** RichPay Fincorp representatives will never ask for your OTP, passwords, UPI PIN, or internet banking credentials. Do not share these with anyone.' },
+
+    { type: 'h2', text: 'Contact Information' },
+    { type: 'contact', groups: [
+      { label: 'RichPay Fincorp', rows: [
+        { kind: 'address', value: ['Office No. 510, 5th Floor, Surya Kiran Building', 'K.G. Marg, Connaught Place, New Delhi – 110001, India'] },
+      ] },
+      { label: 'Customer Support', rows: [
+        { kind: 'email', value: 'support@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00811' },
+      ] },
+      { label: 'Grievance Officer', rows: [
+        { kind: 'email', value: 'grievance@richpayfincorp.com' },
+        { kind: 'phone', value: '+91-93556-00223' },
+      ] },
+    ] },
+  ],
+}

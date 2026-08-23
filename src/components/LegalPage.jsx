@@ -88,21 +88,30 @@ function Block({ block }) {
           {block.groups.map((g, i) => (
             <div key={g.label} className={i ? 'mt-6' : ''}>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-gold-ink)]">{g.label}</p>
-              {g.rows.map((r, j) => r.kind === 'email' ? (
-                <a
-                  key={j}
-                  href={`mailto:${r.value}`}
-                  className="mt-2 inline-flex min-h-6 items-center gap-2 py-1 text-[0.9375rem] font-medium text-[var(--color-ink)] underline decoration-[var(--color-gold)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-gold-ink)] cursor-pointer break-all"
-                >
-                  <Icon name="mail" size={16} className="shrink-0 text-[var(--color-gold-ink)]" />
-                  {r.value}
-                </a>
-              ) : (
-                <p key={j} className="mt-2 flex items-start gap-2 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
-                  <Icon name="pin" size={16} className="mt-1 shrink-0 text-[var(--color-gold-ink)]" />
-                  <span>{r.value.map((line, k) => <Fragment key={k}>{line}{k < r.value.length - 1 && <br />}</Fragment>)}</span>
-                </p>
-              ))}
+              {g.rows.map((r, j) => {
+                const link = 'mt-2 flex w-fit min-h-6 items-center gap-2 py-1 text-[0.9375rem] font-medium text-[var(--color-ink)] underline decoration-[var(--color-gold)] decoration-2 underline-offset-4 transition-colors hover:text-[var(--color-gold-ink)] cursor-pointer'
+                if (r.kind === 'email') return (
+                  <a key={j} href={`mailto:${r.value}`} className={`${link} break-all`}>
+                    <Icon name="mail" size={16} className="shrink-0 text-[var(--color-gold-ink)]" />
+                    {r.value}
+                  </a>
+                )
+                if (r.kind === 'phone') return (
+                  <a key={j} href={`tel:${r.value.replace(/[^+\d]/g, '')}`} className={link}>
+                    <Icon name="phone" size={16} className="shrink-0 text-[var(--color-gold-ink)]" />
+                    <span data-numeric>{r.value}</span>
+                  </a>
+                )
+                if (r.kind === 'note') return (
+                  <p key={j} className="mt-3 text-[0.875rem] leading-relaxed text-[var(--color-muted)]">{renderInline(r.value)}</p>
+                )
+                return (
+                  <p key={j} className="mt-2 flex items-start gap-2 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+                    <Icon name="pin" size={16} className="mt-1 shrink-0 text-[var(--color-gold-ink)]" />
+                    <span>{r.value.map((line, k) => <Fragment key={k}>{line}{k < r.value.length - 1 && <br />}</Fragment>)}</span>
+                  </p>
+                )
+              })}
             </div>
           ))}
         </div>
