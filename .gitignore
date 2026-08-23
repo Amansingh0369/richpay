@@ -5,3 +5,7 @@ dist
 .claude/settings.local.json
 .env
 .env.local
+# Vendored Claude Code skill — 4.9MB of third-party data, not project source.
+# The README documents running .claude/skills/ui-ux-pro-max/scripts/search.py;
+# install the skill locally rather than tracking it here.
+.claude/skills/
