@@ -268,7 +268,7 @@ export const footer = {
     { title: 'Legal', links: [
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms' },
-      { label: 'Fair Practice Code' },
+      { label: 'Fair Practice Code', href: '/fair-practice-code' },
       { label: 'Interest Rate Policy' },
       { label: 'Refund & Cancellation Policy' },
       { label: 'Grievance Redressal' },

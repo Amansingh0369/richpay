@@ -237,3 +237,120 @@ export const termsAndConditions = {
     { type: 'note', text: 'By accessing the RichPay Fincorp website, mobile application, or applying for a loan, you acknowledge that you have read, understood, and agreed to these Terms and Conditions in their entirety.' },
   ],
 }
+
+export const fairPracticeCode = {
+  slug: 'fair-practice-code',
+  eyebrow: 'Legal',
+  title: 'Fair Practice Code',
+  sub: "RichPay Fincorp's commitment to fair, transparent, and ethical lending in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited).",
+  // No revision date is stated on the source page — intentionally omitted.
+  updated: null,
+  metaTitle: 'Fair Practice Code — RichPay Fincorp',
+  metaDescription: "RichPay Fincorp's Fair Practices Code ensuring transparent, ethical, and responsible lending.",
+
+  blocks: [
+    { type: 'h2', text: '1. Introduction' },
+    { type: 'p', text: 'RichPay Fincorp is a digital lending platform facilitating access to credit products offered in association with **Richpay Fincorp Private Limited** (Formerly Known As Malwa Leasing & Credits Private Limited) (“Company”), a Non-Banking Financial Company (NBFC) registered with the Reserve Bank of India (RBI).' },
+    { type: 'p', text: 'This Fair Practices Code (“FPC”) has been adopted to ensure that customers are treated fairly and that all lending activities are conducted in a transparent, ethical, and responsible manner, based on guidelines issued by the Reserve Bank of India from time to time.' },
+    { type: 'p', text: 'This Code shall apply to all loan products offered through RichPay Fincorp.' },
+
+    { type: 'h2', text: '2. Objectives' },
+    { type: 'ul', items: [
+      'Promote fair and transparent dealings between the Company and its customers.',
+      'Ensure customers receive adequate information to make informed borrowing decisions.',
+      'Establish high standards of customer service.',
+      'Encourage responsible lending and ethical recovery practices.',
+      'Provide an effective grievance redressal mechanism.',
+      'Comply with applicable laws, regulations, and RBI guidelines.',
+    ] },
+
+    { type: 'h2', text: '3. Non-Discrimination Policy' },
+    { type: 'p', text: 'The Company shall not discriminate against any applicant on the basis of religion, caste, community, gender, marital status, race, language, disability, place of birth, or region. All loan applications shall be evaluated solely on the basis of eligibility criteria, repayment capacity, creditworthiness, risk assessment, and internal lending policies.' },
+
+    { type: 'h2', text: '4. Loan Applications and Processing' },
+    { type: 'h3', text: '4.1 Loan Application Process' },
+    { type: 'p', text: 'Customers may apply for loans through the RichPay Fincorp website, mobile applications, or other approved channels. The loan application process shall be designed to be simple, transparent, and customer-friendly.' },
+    { type: 'h3', text: '4.2 Information Required' },
+    { type: 'p', text: 'Applicants may be required to provide PAN, Aadhaar, mobile number, email address, bank statements, salary slips, GST documents, CKYC information, Account Aggregator data, employment details, and other information required for credit assessment.' },
+    { type: 'h3', text: '4.3 Application Acknowledgement' },
+    { type: 'p', text: 'Upon receipt of a completed loan application, the Company may acknowledge the application through electronic means including SMS, email, website notifications, or mobile app notifications.' },
+
+    { type: 'h2', text: '5. Loan Assessment and Eligibility' },
+    { type: 'p', text: 'All loan applications shall be assessed based on identity verification, KYC compliance, income assessment, credit bureau information, existing debt obligations, repayment capacity, internal risk parameters, and fraud prevention checks.' },
+    { type: 'p', text: 'The Company reserves the right to approve, reject, or modify any loan application based on its internal credit policies. Submission of a loan application does not guarantee loan approval.' },
+
+    { type: 'h2', text: '6. Loan Sanction and Communication' },
+    { type: 'p', text: 'Upon approval, the borrower shall be informed of the loan amount, tenure, interest rate, Annual Percentage Rate (APR), processing fees, applicable taxes, repayment schedule, penal charges, foreclosure conditions, and other material terms. Such information shall be communicated through a sanction letter, Key Fact Statement (KFS), loan agreement, or other approved channels.' },
+
+    { type: 'h2', text: '7. Transparency in Pricing' },
+    { type: 'p', text: 'The Company is committed to complete transparency in pricing. The borrower shall be informed in advance regarding:' },
+    { type: 'ul', items: [
+      'Interest Rates and Annual Percentage Rate (APR)',
+      'Processing Charges and Documentation Charges (if any)',
+      'Penal Charges, Bounce Charges, Foreclosure Charges (if applicable)',
+      'Government Taxes and other applicable fees',
+    ] },
+    { type: 'p', text: '**No hidden charges shall be levied.** All applicable charges shall be disclosed before loan acceptance.' },
+
+    { type: 'h2', text: '8. Interest Rate Policy' },
+    { type: 'p', text: 'Interest rates are determined based on credit profile, repayment capacity, income stability, employment profile, loan amount, tenure, market conditions, and risk assessment. Interest rates may vary from borrower to borrower. The applicable rate shall be communicated before loan disbursement.' },
+
+    { type: 'h2', text: '9. Loan Disbursement' },
+    { type: 'p', text: "Loans shall be disbursed only after completion of KYC verification, acceptance of loan terms, execution of the loan agreement, and completion of required compliance checks. Disbursement shall normally be made directly to the borrower's verified bank account through approved banking channels." },
+
+    { type: 'h2', text: '10. Privacy and Confidentiality' },
+    { type: 'p', text: 'Customer information shall be collected, processed, stored, and used only for legitimate business purposes including identity verification, credit assessment, loan servicing, fraud prevention, regulatory compliance, and customer support.' },
+    { type: 'p', text: 'Customer information shall not be disclosed to third parties except with customer consent, as required by law, to credit bureaus, to regulators, to authorized service providers, or to courts and law enforcement authorities. The Company shall implement appropriate security measures to protect customer data.' },
+
+    { type: 'h2', text: '11. Fair Recovery Practices' },
+    { type: 'p', text: 'The Company follows a policy of respectful, lawful, and ethical recovery practices. Recovery efforts shall be conducted in a professional manner.' },
+    { type: 'p', text: 'The Company shall **not**:' },
+    { type: 'ul', items: [
+      'Use abusive language or threatening behavior',
+      'Harass borrowers or contact them at unreasonable hours',
+      'Use coercive recovery methods',
+      'Misrepresent legal consequences',
+      'Violate customer privacy',
+    ] },
+    { type: 'p', text: 'Recovery activities shall be carried out only by authorized personnel acting within applicable legal and regulatory requirements.' },
+
+    { type: 'h2', text: '12. Customer Communication' },
+    { type: 'p', text: 'The Company shall communicate with customers through email, SMS, telephone, mobile applications, website notifications, and other legally permissible channels. Customers shall be informed about material changes affecting their loan accounts whenever required.' },
+
+    { type: 'h2', text: '13. Grievance Redressal Mechanism' },
+    { type: 'p', text: 'The Company is committed to resolving customer complaints promptly and fairly. Complaints shall be acknowledged and addressed within reasonable timelines in accordance with applicable regulatory requirements.' },
+    { type: 'contact', groups: [
+      { label: 'Customer Support', rows: [{ kind: 'email', value: 'support@richpayfincorp.com' }] },
+      { label: 'Grievance Redressal Officer', rows: [{ kind: 'email', value: 'grievance@richpayfincorp.com' }] },
+      { label: 'Registered Office', rows: [{ kind: 'address', value: ['Office No. 510, 5th Floor, Surya Kiran Building, K.G. Marg, Connaught Place, New Delhi – 110001'] }] },
+    ] },
+    { type: 'p', text: 'If a customer remains dissatisfied after exhausting the internal grievance mechanism, the customer may approach the appropriate regulatory or legal authority as permitted under applicable laws.' },
+
+    { type: 'h2', text: '14. Digital Lending Practices' },
+    { type: 'p', text: 'The Company is committed to responsible digital lending and shall:' },
+    { type: 'ul', items: [
+      'Obtain necessary customer consent before collecting personal information.',
+      'Clearly disclose all loan terms before loan acceptance.',
+      'Provide access to loan documents.',
+      'Maintain transparency in pricing and charges.',
+      'Protect customer data and privacy.',
+      'Comply with RBI Digital Lending Guidelines and applicable laws.',
+    ] },
+    { type: 'p', text: 'The Company shall not access mobile phone data, contacts, messages, photographs, videos, call logs, or other personal information beyond what is required for lawful credit assessment and regulatory compliance.' },
+
+    { type: 'h2', text: '15. Foreclosure and Prepayment' },
+    { type: 'p', text: 'Borrowers may be permitted to prepay or foreclose their loans subject to the terms specified in the loan agreement. Any applicable foreclosure conditions shall be disclosed before loan acceptance.' },
+
+    { type: 'h2', text: '16. Review of Fair Practices Code' },
+    { type: 'p', text: 'This Fair Practices Code may be reviewed and updated from time to time to ensure compliance with RBI Guidelines, applicable laws, industry best practices, and internal policy changes. The latest version shall be available on the RichPay Fincorp website and mobile applications.' },
+
+    { type: 'h2', text: '17. Contact Information' },
+    { type: 'contact', groups: [
+      { label: 'RichPay Fincorp', rows: [{ kind: 'address', value: ['Office No. 510, 5th Floor, Surya Kiran Building', 'K.G. Marg, Connaught Place, New Delhi – 110001'] }] },
+      { label: 'Support Email', rows: [{ kind: 'email', value: 'support@richpayfincorp.com' }] },
+      { label: 'Grievance Email', rows: [{ kind: 'email', value: 'grievance@richpayfincorp.com' }] },
+    ] },
+
+    { type: 'note', text: 'This Fair Practices Code shall come into force with immediate effect and shall apply to all lending activities facilitated through RichPay Fincorp in association with Richpay Fincorp Private Limited (Formerly Known As Malwa Leasing & Credits Private Limited).' },
+  ],
+}

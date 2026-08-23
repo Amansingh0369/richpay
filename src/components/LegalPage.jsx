@@ -121,7 +121,11 @@ export default function LegalPage({ doc }) {
                 {doc.title}
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-white/72">{doc.sub}</p>
-              <p className="mt-5 text-[0.8125rem] text-white/55">Last updated: {doc.updated}</p>
+              {/* The Fair Practice Code carries no revision date; only render one
+                  when the source document actually states it. */}
+              {doc.updated && (
+                <p className="mt-5 text-[0.8125rem] text-white/55">Last updated: {doc.updated}</p>
+              )}
             </div>
           </div>
         </section>
