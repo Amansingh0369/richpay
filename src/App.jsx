@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import ScrollManager from './components/ScrollManager'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import Terms from './pages/Terms'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
         {/* Unknown paths fall back to the landing page rather than a dead end */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

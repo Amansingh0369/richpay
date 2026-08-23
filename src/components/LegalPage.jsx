@@ -68,6 +68,13 @@ function Block({ block }) {
           })}
         </ul>
       )
+    case 'note':
+      // Closing acknowledgement — set apart from the numbered clauses above it.
+      return (
+        <p className="mt-12 border-t border-[var(--color-line)] pt-6 text-[0.9375rem] italic leading-[1.8] text-[var(--color-muted)]">
+          {renderInline(block.text)}
+        </p>
+      )
     case 'contact':
       return (
         <div className="mt-6 rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-[var(--color-surface)] p-6 md:p-7">
