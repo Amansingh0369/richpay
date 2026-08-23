@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { nav } from '../data/content'
 import Icon from './Icons'
+import SmartLink from './SmartLink'
 import logo from '../assets/logo-richpay-invert.png'
 
 export default function Header() {
@@ -36,25 +37,25 @@ export default function Header() {
       }`}
     >
       <div className="container-page flex items-center justify-between h-20 gap-4">
-        <a href="#top" className="flex items-center shrink-0" aria-label="RichPay Fincorp — home">
+        <SmartLink to="#top" className="flex items-center shrink-0" aria-label="RichPay Fincorp — home">
           <img src={logo} alt="RichPay Fincorp" className="h-11 w-auto md:h-12" />
-        </a>
+        </SmartLink>
 
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
           {nav.map((item) => (
-            <a
+            <SmartLink
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="inline-flex items-center min-h-6 py-1 text-sm font-medium text-white/85 hover:text-[var(--color-gold-soft)] transition-colors duration-200 cursor-pointer"
             >
               {item.label}
-            </a>
+            </SmartLink>
           ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#login" className="btn btn-outline-invert !min-h-11 !py-2.5 !px-5 text-sm">Login</a>
-          <a href="#apply" className="btn btn-gold !min-h-11 !py-2.5 !px-5 text-sm">Apply now</a>
+          <SmartLink to="#login" className="btn btn-outline-invert !min-h-11 !py-2.5 !px-5 text-sm">Login</SmartLink>
+          <SmartLink to="#apply" className="btn btn-gold !min-h-11 !py-2.5 !px-5 text-sm">Apply now</SmartLink>
         </div>
 
         <button
@@ -77,18 +78,18 @@ export default function Header() {
       >
         <nav aria-label="Mobile" className="container-page py-6 flex flex-col gap-1">
           {nav.map((item) => (
-            <a
+            <SmartLink
               key={item.href}
-              href={item.href}
+              to={item.href}
               onClick={() => setOpen(false)}
               className="py-3.5 text-base font-medium text-white/90 hover:text-[var(--color-gold-soft)] border-b border-white/8 transition-colors cursor-pointer"
             >
               {item.label}
-            </a>
+            </SmartLink>
           ))}
           <div className="flex flex-col gap-3 pt-5">
-            <a href="#login" className="btn btn-outline-invert w-full">Login</a>
-            <a href="#apply" className="btn btn-gold w-full">Apply now</a>
+            <SmartLink to="#login" className="btn btn-outline-invert w-full">Login</SmartLink>
+            <SmartLink to="#apply" className="btn btn-gold w-full">Apply now</SmartLink>
           </div>
         </nav>
       </div>

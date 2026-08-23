@@ -1,5 +1,6 @@
 import { footer, company } from '../data/content'
 import Icon from './Icons'
+import SmartLink from './SmartLink'
 import logo from '../assets/logo-richpay-invert.png'
 
 const social = [
@@ -58,8 +59,13 @@ export default function Footer() {
                 <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-gold-soft)]">{col.title}</h2>
                 <ul className="mt-5 space-y-3">
                   {col.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="inline-flex items-center min-h-6 py-1 text-sm text-white/70 hover:text-white transition-colors cursor-pointer">{l}</a>
+                    <li key={l.label}>
+                      <SmartLink
+                        to={l.href}
+                        className="inline-flex items-center min-h-6 py-1 text-sm text-white/70 hover:text-white transition-colors cursor-pointer"
+                      >
+                        {l.label}
+                      </SmartLink>
                     </li>
                   ))}
                 </ul>

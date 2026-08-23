@@ -251,16 +251,28 @@ export const finalCta = {
 }
 
 export const footer = {
+  // `href` is optional. Entries without one have no route yet and render as an
+  // inert '#'. SmartLink decides how each href is navigated.
   columns: [
-    { title: 'Products', links: ['Personal Loan', 'Short Term Loan', 'Emergency Loan'] },
-    { title: 'Company', links: ['About', 'Customer Stories', 'Trust & Security', 'FAQs'] },
-    {
-      title: 'Legal',
-      links: [
-        'Privacy Policy', 'Terms of Service', 'Fair Practice Code',
-        'Interest Rate Policy', 'Refund & Cancellation Policy', 'Grievance Redressal',
-      ],
-    },
+    { title: 'Products', links: [
+      { label: 'Personal Loan', href: '#products' },
+      { label: 'Short Term Loan', href: '#products' },
+      { label: 'Emergency Loan', href: '#products' },
+    ] },
+    { title: 'Company', links: [
+      { label: 'About', href: '#about' },
+      { label: 'Customer Stories', href: '#testimonials' },
+      { label: 'Trust & Security', href: '#trust' },
+      { label: 'FAQs' },
+    ] },
+    { title: 'Legal', links: [
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service' },
+      { label: 'Fair Practice Code' },
+      { label: 'Interest Rate Policy' },
+      { label: 'Refund & Cancellation Policy' },
+      { label: 'Grievance Redressal' },
+    ] },
   ],
   disclaimer:
     'All loans are subject to eligibility, credit assessment and regulatory requirements. RichPay Fincorp Private Limited is a registered NBFC-ICC with the Reserve Bank of India.',
