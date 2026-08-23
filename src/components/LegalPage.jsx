@@ -19,6 +19,11 @@ import SmartLink from './SmartLink'
    system's line-length rule already handles measure. Left-aligned here.
    ========================================================================== */
 
+/* Both the title band and the document share this column so their left edges
+   line up and the whole page reads as one centred measure. ~44rem keeps body
+   copy near 70 characters a line, inside the 65-75 the design system asks for. */
+const COLUMN = 'mx-auto w-full max-w-[44rem]'
+
 /** Renders **bold** spans inside otherwise plain copy. */
 function renderInline(text) {
   return text.split('**').map((part, i) =>
@@ -104,7 +109,7 @@ export default function LegalPage({ doc }) {
         {/* ---- Title band ---- */}
         <section className="surface-hero relative overflow-hidden pt-32 pb-14 md:pt-36 md:pb-16">
           <div className="container-page relative z-10">
-            <div className="max-w-[46rem]">
+            <div className={COLUMN}>
               <SmartLink
                 to="/"
                 className="flex w-fit min-h-6 items-center gap-2 py-1 text-sm font-medium text-white/70 transition-colors hover:text-[var(--color-gold-soft)] cursor-pointer"
@@ -129,7 +134,7 @@ export default function LegalPage({ doc }) {
           <div className="container-page">
             {/* No scroll-reveal here: legal copy must render immediately and be
                 crawlable, and a document this tall never satisfies whileInView. */}
-            <div className="max-w-[68ch] text-[1rem]">
+            <div className={`${COLUMN} text-[1rem]`}>
               {doc.blocks.map((b, i) => <Block key={i} block={b} />)}
             </div>
           </div>
