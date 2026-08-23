@@ -121,8 +121,8 @@ export const bandStats = [
 
 export const products = {
   eyebrow: 'Our products',
-  title: 'Credit that matches the need',
-  sub: 'Two clear products, priced upfront. No fine print.',
+  title: 'Financial products that fit your life',
+  sub: 'Short-term and personal loans — fully digital, transparent terms, no hidden charges.',
   items: [
     {
       name: 'Personal Loan',
@@ -131,7 +131,6 @@ export const products = {
       tenure: '3 – 12 months',
       positioning: 'A personal loan for everyday financial needs, whether planned or unexpected.',
       points: ['For planned and unplanned expenses', 'Available to salaried & self-employed individuals'],
-      featured: true,
     },
     {
       name: 'Short-Term Loan',
@@ -140,16 +139,6 @@ export const products = {
       tenure: '7 – 90 days',
       positioning: 'Short-term access to funds when customers need money quickly.',
       points: ['Designed to bridge the gap before the next paycheck', 'Fully digital, disbursed in hours'],
-      featured: false,
-    },
-    {
-      name: 'Emergency Loan',
-      amount: 'On request',
-      rate: 'As per eligibility',
-      tenure: 'Flexible',
-      positioning: 'For urgent, unavoidable expenses that cannot wait.',
-      points: ['Referenced in the product line-up', 'Speak to an advisor for terms'],
-      featured: false,
     },
   ],
 }
@@ -287,7 +276,6 @@ export const footer = {
       title: 'Products', links: [
         { label: 'Personal Loan', href: '#products' },
         { label: 'Short Term Loan', href: '#products' },
-        { label: 'Emergency Loan', href: '#products' },
       ]
     },
     {
