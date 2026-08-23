@@ -392,6 +392,26 @@
     color: rgba(255,255,255,.78);          /* 7.7:1 on royal ✓ */
   }
 
+  /* --- Infinite marquee ---------------------------------------------------
+     The track holds the item set twice over, so translating it -50% lands
+     exactly where it started — a seamless loop with no jump.
+     It runs continuously — no hover pause, no in-page control, by request.
+     prefers-reduced-motion below is the only thing that stops it, which is what
+     users who need motion stopped will have set at the OS level. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-x var(--marquee-duration, 38s) linear infinite;
+  }
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  /* Reduced motion: no travel at all, just the static first run of items. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; transform: none; }
+  }
+
   /* --- Section number/eyebrow on light ---------------------------------- */
   .eyebrow { font-family: var(--font-display); }
 }
