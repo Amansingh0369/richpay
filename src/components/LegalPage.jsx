@@ -2,7 +2,6 @@ import { Fragment } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Icon from './Icons'
-import SmartLink from './SmartLink'
 
 /* ============================================================================
    Shell for legal / policy pages (privacy policy, terms, fair practice code…).
@@ -109,21 +108,12 @@ export default function LegalPage({ doc }) {
         {/* ---- Title band ---- */}
         <section className="surface-hero relative overflow-hidden pt-32 pb-14 md:pt-36 md:pb-16">
           <div className="container-page relative z-10">
-            <div className={COLUMN}>
-              <SmartLink
-                to="/"
-                className="flex w-fit min-h-6 items-center gap-2 py-1 text-sm font-medium text-white/70 transition-colors hover:text-[var(--color-gold-soft)] cursor-pointer"
-              >
-                <span aria-hidden="true" className="inline-block rotate-180"><Icon name="arrow-right" size={16} /></span>
-                Back to home
-              </SmartLink>
-              <div className="mt-6">
-                <span className="pill pill-quiet">{doc.eyebrow}</span>
-              </div>
-              <h1 className="mt-5 font-display text-[clamp(2rem,1.4rem+2vw,2.75rem)] font-semibold leading-[1.1] tracking-display text-white">
+            <div className={`${COLUMN} text-center`}>
+              <span className="pill pill-quiet">{doc.eyebrow}</span>
+              <h1 className="mt-6 font-display text-[clamp(2rem,1.4rem+2vw,2.75rem)] font-semibold leading-[1.1] tracking-display text-white">
                 {doc.title}
               </h1>
-              <p className="mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-white/72">{doc.sub}</p>
+              <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-white/72">{doc.sub}</p>
               <p className="mt-5 text-[0.8125rem] text-white/55">Last updated: {doc.updated}</p>
             </div>
           </div>
