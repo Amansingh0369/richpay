@@ -25,6 +25,14 @@ export const social = [
   { name: 'X', icon: 'x', href: 'https://x.com/richpay_finance' },
 ]
 
+/* The live loan portal. Apply and Repay both land on it, matching the current
+   production site. External, so these open in a new tab. */
+export const portal = {
+  url: 'https://richpayfincorp.finaxle.com/welcome',
+  apply: 'Apply',
+  repay: 'Repay',
+}
+
 export const nav = [
   { label: 'How it works', href: '#process' },
   { label: 'Products', href: '#products' },

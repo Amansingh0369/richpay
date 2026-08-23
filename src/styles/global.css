@@ -128,6 +128,40 @@
   }
   .btn-outline-invert:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--color-gold-soft); color: var(--color-gold-soft); }
 
+  /* --- Nav link with a gold underline that wipes in ----------------------
+     The rule is a pseudo-element scaled on the X axis, so it animates on the
+     compositor rather than reflowing anything. It responds to :focus-visible as
+     well as :hover — a keyboard user gets the same affordance a mouse user does.
+     The global prefers-reduced-motion block collapses the transition to
+     effectively zero, so the underline still appears, just without the wipe. */
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+    padding-block: 0.35rem;
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: color var(--dur-base) var(--ease-out);
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  .nav-link:hover,
+  .nav-link:focus-visible { color: var(--color-gold-soft); }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after { transform: scaleX(1); }
+
   /* --- Surfaces ---------------------------------------------------------- */
   .card {
     background: var(--color-card);
