@@ -421,8 +421,13 @@ export default function Calculator() {
     }
   }
 
+  /* Canvas, not surface. The page alternates canvas and grey bands, and Why
+     above this one is grey — the two used to be separated by the Products
+     section, which is gone, so they ran together as one band. Same token as
+     Testimonials and MobileApp, whose white cards read against it on the
+     strength of card-lift's border and shadow. */
   return (
-    <section id="calculator" className="section bg-[var(--color-surface)]">
+    <section id="calculator" className="section bg-[var(--color-canvas)]">
       <div className="container-page">
         <Reveal className="mx-auto max-w-5xl text-center">
           <span className="eyebrow">{c.eyebrow}</span>

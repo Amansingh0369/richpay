@@ -156,59 +156,13 @@ function AnchorTile({ item, markY }) {
   )
 }
 
-/* ---- Standard feature tile ------------------------------------------- */
-/* Module scope on purpose: declared inside the parent it would be a new
-   component type on every render, remounting the tile and restarting its
-   animations. */
-function FeatureTile({ item, row = false }) {
-  const { bind, background, opacity, reduce } = useSpotlight({ size: 260, tint: 'rgba(198,154,69,0.13)' })
-
-  /* Horizontal on a phone — icon beside the text reads faster in a short row
-     than a stacked card does — and upright from sm.
-
-     `row` lies it back down at md, which the bento's bottom row needs: that row
-     is ~166px tall, and upright (icon, 20px gap, title, body) wants ~215px in a
-     single column. The tile is `justify-end`, so the surplus goes off the TOP
-     and card-lift's overflow:hidden clips the icon away silently — it does not
-     scroll and scrollHeight cannot see it. Lying down puts the icon beside the
-     text instead of above it, which the row has width for. */
-  const shape = row
-    ? 'flex-row items-center gap-4 sm:flex-col sm:items-start sm:justify-end sm:gap-0 lg:flex-row lg:items-center lg:gap-3.5'
-    : 'flex-row items-center gap-4 sm:flex-col sm:items-start sm:justify-end sm:gap-0'
-
-  return (
-    <motion.article
-      {...bind}
-      whileHover={reduce ? undefined : { y: -6 }}
-      transition={HOVER}
-      className={`card-lift group flex h-full p-5 transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] sm:p-6 ${shape}`}
-    >
-      <Spotlight background={background} opacity={opacity} />
-      <motion.span
-        className={`relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-gold)]/22 to-[var(--color-gold)]/8 text-[var(--color-gold-ink)] sm:h-12 sm:w-12 ${row ? 'lg:h-10 lg:w-10' : ''}`}
-        whileHover={reduce ? undefined : { scale: 1.1, rotate: -6 }}
-        transition={HOVER}
-      >
-        <Icon name={item.icon} size={22} />
-      </motion.span>
-      <div className={`relative min-w-0 sm:mt-5 ${row ? 'lg:mt-0' : ''}`}>
-        <h3 className={`text-[1rem] font-semibold leading-snug md:text-[1.0625rem] ${row ? 'lg:text-[0.9375rem]' : ''}`}>
-          {item.title}
-        </h3>
-        <p className={`mt-1.5 text-[0.875rem] leading-relaxed text-[var(--color-muted)] sm:mt-2.5 md:text-[0.9375rem] ${row ? 'lg:mt-1 lg:text-[0.8125rem]' : ''}`}>
-          {item.body}
-        </p>
-      </div>
-    </motion.article>
-  )
-}
-
-/* ---- Duo tile: two features sharing one card -------------------------- */
-/* The bento's right column is one tall slot rather than two upright cards, so
-   these two ride in a single surface split by a hairline. Each keeps its own
-   icon, heading and body — this is one tile holding two features, not one
-   merged feature, so the copy is untouched and each still reads on its own. */
-function DuoTile({ items }) {
+/* ---- Stack tile: every supporting feature in one card ----------------- */
+/* The bento's right column is a single full-height slot rather than a set of
+   separate cards, so the supporting features ride one surface split by
+   hairlines. Each keeps its own icon, heading and body — this is one tile
+   holding several features, not one merged feature, so the copy is untouched
+   and each still reads on its own. */
+function StackTile({ items }) {
   const { bind, background, opacity, reduce } = useSpotlight({ size: 380, tint: 'rgba(198,154,69,0.13)' })
 
   return (
@@ -337,11 +291,8 @@ function CtaTile({ cta }) {
 
 export default function Why() {
   const featured = why.items.find((i) => i.featured) || why.items[0]
+  // Everything that is not the anchor rides the right-hand column's stack tile.
   const rest = why.items.filter((i) => i !== featured)
-  // The right-hand column is a single tall slot holding the first two
-  // supporting features; anything after them sits along the bottom row.
-  const duo = rest.slice(0, 2)
-  const trailing = rest.slice(2)
 
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
@@ -370,24 +321,18 @@ export default function Why() {
             <AnchorTile item={featured} markY={markY} />
           </Item>
 
-          {/* Rows 1-2 are two wide tiles side by side: the anchor and the duo.
-              Row 3 carries the rest — two small tiles under the anchor, and the
-              CTA under the duo. */}
-          <Item variants={riseIn} className="col-span-2 lg:row-span-2">
-            <DuoTile items={duo} />
+          {/* The stack runs the full height of the right-hand column, which is
+              what gives it room for every supporting feature; the anchor takes
+              rows 1-2 on the left, and the stat and CTA sit beneath it. */}
+          <Item variants={riseIn} className="col-span-2 lg:row-span-3">
+            <StackTile items={rest} />
           </Item>
-
-          {trailing.map((item) => (
-            <Item variants={riseIn} key={item.title} className="col-span-2 sm:col-span-1">
-              <FeatureTile item={item} row />
-            </Item>
-          ))}
 
           <Item variants={riseIn} className="col-span-1">
             <StatTile stat={why.stat} />
           </Item>
 
-          <Item variants={riseIn} className="col-span-1 sm:col-span-2">
+          <Item variants={riseIn} className="col-span-1">
             <CtaTile cta={why.cta} />
           </Item>
         </Group>
