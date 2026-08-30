@@ -3,7 +3,6 @@ import Hero from '../components/Hero'
 import StatsBand from '../components/StatsBand'
 import Process from '../components/Process'
 import Why from '../components/Why'
-import Products from '../components/Products'
 import Calculator from '../components/Calculator'
 import Trust from '../components/Trust'
 import Testimonials from '../components/Testimonials'
@@ -22,7 +21,6 @@ export default function Home() {
         <StatsBand />
         <Process />
         <Why />
-        <Products />
         <Calculator />
         <Trust />
         <Testimonials />

@@ -106,7 +106,7 @@ export default function Hero() {
                   <Icon name="arrow-right" size={18} />
                 </span>
               </a>
-              <a href="#products" className="btn btn-outline-invert">{hero.secondaryCta}</a>
+              <a href="#calculator" className="btn btn-outline-invert">{hero.secondaryCta}</a>
             </motion.div>
 
             <motion.dl className="mt-7 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8" {...item}>

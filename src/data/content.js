@@ -119,30 +119,6 @@ export const bandStats = [
   { value: '24 hrs', label: 'Average disbursal' },
 ]
 
-export const products = {
-  eyebrow: 'Our products',
-  title: 'Financial products that fit your life',
-  sub: 'Short-term and personal loans — fully digital, transparent terms, no hidden charges.',
-  items: [
-    {
-      name: 'Personal Loan',
-      amount: '₹50,000 – ₹5,00,000',
-      rate: 'Up to 24% p.a.',
-      tenure: '3 – 12 months',
-      positioning: 'A personal loan for everyday financial needs, whether planned or unexpected.',
-      points: ['For planned and unplanned expenses', 'Available to salaried & self-employed individuals'],
-    },
-    {
-      name: 'Short-Term Loan',
-      amount: '₹10,000 – ₹2,00,000',
-      rate: 'Up to 24% p.a.',
-      tenure: '7 – 90 days',
-      positioning: 'Short-term access to funds when customers need money quickly.',
-      points: ['Designed to bridge the gap before the next paycheck', 'Fully digital, disbursed in hours'],
-    },
-  ],
-}
-
 export const calculator = {
   eyebrow: 'Loan calculator',
   title: 'Know your repayment, instantly',
@@ -157,10 +133,13 @@ export const calculator = {
        · short-term runs FLAT simple interest per day (P x r x days)
        · personal runs a REDUCING-BALANCE EMI per month
 
-     NOTE: these ranges come from the calculator spec and do NOT match the
-     Products section on the same page, which states 3-12 months and up to
-     24% p.a. for the Personal Loan. 6%/month is 60% p.a. and 36 months is
-     three years. Two different sets of terms for one product need reconciling.
+     NOTE: these ranges come from the calculator spec. They used to contradict
+     the Products section, which stated 3-12 months and up to 24% p.a. for the
+     Personal Loan; that section has since been removed, so the calculator is
+     now the ONLY place the site states terms — and it states 6%/month, i.e.
+     60% p.a., over up to 36 months. Removing the conflicting copy did not
+     reconcile the numbers, it just left this side of it unopposed. Confirm
+     these are the rates being disclosed before launch.
   */
   products: [
     {
@@ -420,8 +399,8 @@ export const footer = {
   columns: [
     {
       title: 'Products', links: [
-        { label: 'Personal Loan', href: '#products' },
-        { label: 'Short Term Loan', href: '#products' },
+        { label: 'Personal Loan', href: '#calculator' },
+        { label: 'Short Term Loan', href: '#calculator' },
       ]
     },
     {

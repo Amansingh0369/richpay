@@ -4,8 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
    The site mixes three kinds of link and they need different handling once
    routing is client-side:
 
-   · in-page hash ('#products')  — a plain anchor while we're already on the
-     landing page; from any other route it becomes a router Link to '/#products'
+   · in-page hash ('#calculator')  — a plain anchor while we're already on the
+     landing page; from any other route it becomes a router Link to '/#calculator'
      so we navigate first and ScrollManager does the scrolling.
    · route ('/privacy-policy')   — a router Link, so no full page reload.
    · external / protocol         — plain anchor, untouched.
