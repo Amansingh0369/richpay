@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { Fragment, useRef } from 'react'
 import { useMotionTemplate, useMotionValue, useScroll, useSpring, useTransform } from 'motion/react'
 import { why } from '../data/content'
 import Icon from './Icons'
@@ -21,8 +21,12 @@ import mark from '../assets/richpay-mark-invert.png'
    THE FRAME. The section is min-h-[100svh], not h-screen:
    · svh rather than vh, because vh changes as a mobile browser collapses its
      URL bar and the frame would resize under the reader.
-   · The hard lock is gated on min-height:720px as well as md, so a short
-     laptop window grows the section instead of crushing a tile.
+   · The hard lock is gated on min-height:720px as well as lg, so a short
+     laptop window grows the section instead of crushing a tile. lg, not md:
+     the bottom row's tiles are a quarter of the container wide, and between
+     768 and 1024 that is ~173px — too narrow for a titled tile with body copy
+     in a 166px-tall row, so it clipped at both ends. Below lg the bento
+     stacks and the section flows at its natural height instead.
    · pt-24 is not decoration. The 80px header is fixed and paints over the top
      of whatever is beneath it; once the frame is exactly one screen tall, the
      section's own top IS the viewport top, and a smaller pad puts the eyebrow
@@ -156,15 +160,20 @@ function AnchorTile({ item, markY }) {
 /* Module scope on purpose: declared inside the parent it would be a new
    component type on every render, remounting the tile and restarting its
    animations. */
-function FeatureTile({ item, wide = false }) {
+function FeatureTile({ item, row = false }) {
   const { bind, background, opacity, reduce } = useSpotlight({ size: 260, tint: 'rgba(198,154,69,0.13)' })
 
-  /* Two shapes, because the bento gives these tiles two different slots. Both
-     start horizontal on a phone — icon beside the text reads faster in a short
-     row than a stacked card does — and stand up at sm. The `wide` one lies back
-     down at md, where it spans two columns in the bottom row. */
-  const shape = wide
-    ? 'flex-row items-center gap-4 sm:flex-col sm:items-start sm:justify-end sm:gap-0 md:flex-row md:items-center md:gap-6'
+  /* Horizontal on a phone — icon beside the text reads faster in a short row
+     than a stacked card does — and upright from sm.
+
+     `row` lies it back down at md, which the bento's bottom row needs: that row
+     is ~166px tall, and upright (icon, 20px gap, title, body) wants ~215px in a
+     single column. The tile is `justify-end`, so the surplus goes off the TOP
+     and card-lift's overflow:hidden clips the icon away silently — it does not
+     scroll and scrollHeight cannot see it. Lying down puts the icon beside the
+     text instead of above it, which the row has width for. */
+  const shape = row
+    ? 'flex-row items-center gap-4 sm:flex-col sm:items-start sm:justify-end sm:gap-0 lg:flex-row lg:items-center lg:gap-3.5'
     : 'flex-row items-center gap-4 sm:flex-col sm:items-start sm:justify-end sm:gap-0'
 
   return (
@@ -176,18 +185,62 @@ function FeatureTile({ item, wide = false }) {
     >
       <Spotlight background={background} opacity={opacity} />
       <motion.span
-        className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-gold)]/22 to-[var(--color-gold)]/8 text-[var(--color-gold-ink)] sm:h-12 sm:w-12"
+        className={`relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-gold)]/22 to-[var(--color-gold)]/8 text-[var(--color-gold-ink)] sm:h-12 sm:w-12 ${row ? 'lg:h-10 lg:w-10' : ''}`}
         whileHover={reduce ? undefined : { scale: 1.1, rotate: -6 }}
         transition={HOVER}
       >
         <Icon name={item.icon} size={22} />
       </motion.span>
-      <div className={`relative min-w-0 sm:mt-5 ${wide ? 'md:mt-0' : ''}`}>
-        <h3 className="text-[1rem] font-semibold leading-snug md:text-[1.0625rem]">{item.title}</h3>
-        <p className="mt-1.5 text-[0.875rem] leading-relaxed text-[var(--color-muted)] sm:mt-2.5 md:text-[0.9375rem]">
+      <div className={`relative min-w-0 sm:mt-5 ${row ? 'lg:mt-0' : ''}`}>
+        <h3 className={`text-[1rem] font-semibold leading-snug md:text-[1.0625rem] ${row ? 'lg:text-[0.9375rem]' : ''}`}>
+          {item.title}
+        </h3>
+        <p className={`mt-1.5 text-[0.875rem] leading-relaxed text-[var(--color-muted)] sm:mt-2.5 md:text-[0.9375rem] ${row ? 'lg:mt-1 lg:text-[0.8125rem]' : ''}`}>
           {item.body}
         </p>
       </div>
+    </motion.article>
+  )
+}
+
+/* ---- Duo tile: two features sharing one card -------------------------- */
+/* The bento's right column is one tall slot rather than two upright cards, so
+   these two ride in a single surface split by a hairline. Each keeps its own
+   icon, heading and body — this is one tile holding two features, not one
+   merged feature, so the copy is untouched and each still reads on its own. */
+function DuoTile({ items }) {
+  const { bind, background, opacity, reduce } = useSpotlight({ size: 380, tint: 'rgba(198,154,69,0.13)' })
+
+  return (
+    <motion.article
+      {...bind}
+      whileHover={reduce ? undefined : { y: -6 }}
+      transition={HOVER}
+      className="card-lift group flex h-full flex-col justify-center gap-5 p-5 transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] sm:gap-6 sm:p-6 md:gap-7 md:p-7"
+    >
+      <Spotlight background={background} opacity={opacity} />
+      {items.map((item, i) => (
+        <Fragment key={item.title}>
+          {/* The flex gap sits on both sides of the rule, so it needs no margin
+              of its own — and it is decorative, hence aria-hidden. */}
+          {i > 0 && <span aria-hidden="true" className="relative block h-px w-full bg-[var(--color-line)]" />}
+          <div className="relative flex flex-row items-center gap-4 sm:items-start sm:gap-5">
+            <motion.span
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-gold)]/22 to-[var(--color-gold)]/8 text-[var(--color-gold-ink)] sm:h-12 sm:w-12"
+              whileHover={reduce ? undefined : { scale: 1.1, rotate: -6 }}
+              transition={HOVER}
+            >
+              <Icon name={item.icon} size={22} />
+            </motion.span>
+            <div className="min-w-0">
+              <h3 className="text-[1rem] font-semibold leading-snug md:text-[1.0625rem]">{item.title}</h3>
+              <p className="mt-1.5 text-[0.875rem] leading-relaxed text-[var(--color-muted)] md:mt-2 md:text-[0.9375rem]">
+                {item.body}
+              </p>
+            </div>
+          </div>
+        </Fragment>
+      ))}
     </motion.article>
   )
 }
@@ -285,6 +338,10 @@ function CtaTile({ cta }) {
 export default function Why() {
   const featured = why.items.find((i) => i.featured) || why.items[0]
   const rest = why.items.filter((i) => i !== featured)
+  // The right-hand column is a single tall slot holding the first two
+  // supporting features; anything after them sits along the bottom row.
+  const duo = rest.slice(0, 2)
+  const trailing = rest.slice(2)
 
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
@@ -294,9 +351,9 @@ export default function Why() {
     <section
       id="why"
       ref={sectionRef}
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[var(--color-surface)] pb-14 pt-24 [@media(min-width:768px)_and_(min-height:720px)]:h-[100svh]"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[var(--color-surface)] pb-14 pt-24 [@media(min-width:1024px)_and_(min-height:720px)]:h-[100svh]"
     >
-      <div className="container-page flex w-full flex-1 flex-col md:min-h-0">
+      <div className="container-page flex w-full flex-1 flex-col lg:min-h-0">
         <Reveal className="mx-auto max-w-2xl shrink-0 text-center">
           <span className="eyebrow">{why.eyebrow}</span>
           <h2 className="mt-4 text-[clamp(2rem,1.5rem+2vw,3.125rem)] leading-[1.08]"><WordsUp text={why.title} /></h2>
@@ -306,34 +363,31 @@ export default function Why() {
         {/* flex-1 + 1fr rows from md up: the grid absorbs whatever height the
             heading leaves, so the bento divides the frame exactly. */}
         <Group
-          className="mt-8 grid grid-cols-2 gap-3.5 sm:gap-4 md:mt-8 md:min-h-0 md:flex-1 md:grid-cols-4 md:grid-rows-[repeat(3,minmax(0,1fr))] md:gap-4"
+          className="mt-8 grid grid-cols-2 gap-3.5 sm:gap-4 lg:mt-8 lg:min-h-0 lg:flex-1 lg:grid-cols-4 lg:grid-rows-[repeat(3,minmax(0,1fr))] lg:gap-4"
           gap={0.085}
         >
-          <Item variants={riseIn} className="col-span-2 md:row-span-2">
+          <Item variants={riseIn} className="col-span-2 lg:row-span-2">
             <AnchorTile item={featured} markY={markY} />
           </Item>
 
-          {/* The first two stand upright across rows 1-2 beside the anchor; the
-              third lies wide across the bottom-left. That split is what lets the
-              bento hold real body copy inside a single screen. */}
-          {rest.map((item, i) => {
-            const wide = i === 2
-            return (
-              <Item
-                variants={riseIn}
-                key={item.title}
-                className={`col-span-2 sm:col-span-1 ${wide ? 'md:col-span-2' : 'md:row-span-2'}`}
-              >
-                <FeatureTile item={item} wide={wide} />
-              </Item>
-            )
-          })}
+          {/* Rows 1-2 are two wide tiles side by side: the anchor and the duo.
+              Row 3 carries the rest — two small tiles under the anchor, and the
+              CTA under the duo. */}
+          <Item variants={riseIn} className="col-span-2 lg:row-span-2">
+            <DuoTile items={duo} />
+          </Item>
+
+          {trailing.map((item) => (
+            <Item variants={riseIn} key={item.title} className="col-span-2 sm:col-span-1">
+              <FeatureTile item={item} row />
+            </Item>
+          ))}
 
           <Item variants={riseIn} className="col-span-1">
             <StatTile stat={why.stat} />
           </Item>
 
-          <Item variants={riseIn} className="col-span-1 sm:col-span-2 md:col-span-1">
+          <Item variants={riseIn} className="col-span-1 sm:col-span-2">
             <CtaTile cta={why.cta} />
           </Item>
         </Group>
