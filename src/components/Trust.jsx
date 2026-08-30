@@ -78,18 +78,22 @@ export default function Trust() {
 
         {/* Static, correct figures — the live site currently renders these as
             0+ / ₹0Cr+ / 0.0★ / <0 min because its count-up never initialises. */}
-        <Group as="dl" className="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-12 lg:grid-cols-4" gap={0.09}>
-          {trust.stats.map((s) => {
+        <Group as="dl" className="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-12 md:grid-cols-3 md:gap-6" gap={0.09}>
+          {trust.stats.map((s, i) => {
             // See Hero: word-values step down and wrap. `leading-none` is also
             // dropped for them — at 1 the wrapped lines would touch.
             const isPhrase = s.value.length > 9
+            // An odd count leaves the last stat alone on the 2-up mobile row,
+            // wrapping inside half a column with the other half empty. Let it
+            // take the full width there; the 3-up desktop grid is unaffected.
+            const orphan = trust.stats.length % 2 === 1 && i === trust.stats.length - 1
             return (
-            <Item key={s.label} className="flex flex-col">
+            <Item key={s.label} className={`flex flex-col text-center ${orphan ? 'col-span-2 md:col-span-1' : ''}`}>
               <dt className="sr-only">{s.label}</dt>
               <dd className="flex flex-1 flex-col">
                 <span
                   data-numeric
-                  className={`flex items-center gap-1 font-semibold text-[var(--color-gold-soft)] ${
+                  className={`flex items-center justify-center gap-1 font-semibold text-[var(--color-gold-soft)] ${
                     isPhrase
                       ? 'text-[1.125rem] leading-[1.3] text-balance md:text-[1.25rem]'
                       : 'text-[1.75rem] leading-none md:text-[2rem]'

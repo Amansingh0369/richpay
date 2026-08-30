@@ -176,7 +176,6 @@ export const trust = {
     { title: 'Data privacy', body: 'Zero third-party data sharing.', icon: 'eye' },
   ],
   stats: [
-    { value: '34,000+', label: 'Borrowers served' },
     { value: '₹25 Cr+', label: 'Disbursed' },
     { value: '4.8', label: 'Customer rating', star: true },
     { value: 'Less than 15 minutes', label: 'Approval time' },
