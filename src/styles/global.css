@@ -489,15 +489,33 @@
 
 @layer utilities {
   .font-display { font-family: var(--font-display); }
-  /* Hero emphasis words only. IBM Plex Serif runs optically smaller and tighter
-     than Poppins at the same size, so it gets a size nudge and looser tracking
-     to sit level with the line above it. */
+  /* Hero emphasis words only. Boldonse is the inverse of the serif it replaced:
+     a very tall x-height and heavy stems mean it runs MUCH larger than Poppins at
+     the same font-size, so it is stepped down rather than up. No italic and no
+     second weight exist in the family — asking for either gets a synthesised
+     slant or faux-bold, which on a face this heavy reads as a rendering bug. */
   .font-accent {
     font-family: var(--font-accent);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 1.05em;
-    letter-spacing: -0.005em;
+    font-style: normal;
+    font-weight: 400;
+    /* Boldonse sets very wide — "confidence." is 7.56em — so the fit ceiling,
+       not the h1 box, governs this number. The binding case is the narrowest
+       phone: at 320px the headline column is 280px against a 32px h1, which
+       overflows at ~1.2em. 0.9 leaves the accent line comfortably clear there
+       while running ~25% larger than the Poppins lines around it, which is what
+       makes it read as emphasis rather than a font swap. */
+    font-size: 0.9em;
+    /* Boldonse's font box is 1.92em tall (1.52 ascent + 0.40 descent) and the
+       "y" in "clarity" reaches 0.30em below the baseline. Half-leading puts the
+       space under that baseline at line-height/2 - 0.56em, so anything under
+       ~1.6 leaves the descender outside the line box, where the WordsUp reveal
+       mask clips it mid-animation. 1.6 clears it using the mask's existing
+       0.14em allowance; going tighter and widening that allowance instead would
+       overshoot the words' 108% hidden offset and leave them peeking at rest.
+       1.75 sits above that floor and opens the gap between the headline's four
+       lines, matching the h1's own leading bump. */
+    line-height: 1.75;
+    letter-spacing: -0.01em;
   }
   /* Optical fix: Poppins at display sizes needs negative tracking */
   .tracking-display { letter-spacing: -0.035em; }

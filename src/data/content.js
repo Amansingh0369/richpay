@@ -50,7 +50,7 @@ export const nav = [
 export const hero = {
   eyebrow: 'RBI-registered NBFC',
   // Each line is a plain lead + one emphasis word. The emphasis words carry the
-  // gold and the serif accent face; the leads stay white Poppins.
+  // gold and the Boldonse accent face; the leads stay white Poppins.
   headlineLines: [
     { lead: 'Borrow with', accent: 'clarity.' },
     { lead: 'Decide with', accent: 'confidence.' },
@@ -61,7 +61,7 @@ export const hero = {
   stats: [
     { value: '34,000+', label: 'Customers' },
     { value: '4.8', label: 'Google rated', star: true },
-    { value: '<15 min', label: 'Approval' },
+    { value: 'Less than 15 minutes', label: 'Approval' },
   ],
   // Panel 1 of the hero's right-hand stack — an illustrative approval.
   approvalCard: {
@@ -200,7 +200,7 @@ export const trust = {
     { value: '34,000+', label: 'Borrowers served' },
     { value: '₹25 Cr+', label: 'Disbursed' },
     { value: '4.8', label: 'Customer rating', star: true },
-    { value: '<15 min', label: 'Approval time' },
+    { value: 'Less than 15 minutes', label: 'Approval time' },
   ],
 }
 
@@ -409,7 +409,7 @@ export const mobile = {
 export const finalCta = {
   title: 'Your next financial chapter starts here.',
   sub: 'Join 34,000+ Indians who borrow smarter, with full transparency, through RichPay Fincorp.',
-  points: ['4.8-star rated', 'RBI-aligned', 'Zero hidden fees', '<15 min approval'],
+  points: ['4.8-star rated', 'RBI-aligned', 'Zero hidden fees', 'Approval in less than 15 minutes'],
   cta: 'Talk to an advisor',
   secondary: 'Check eligibility',
 }

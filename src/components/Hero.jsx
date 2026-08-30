@@ -79,12 +79,12 @@ export default function Hero() {
           {/* ---------- Left: the pitch ---------- */}
           <motion.div className="lg:col-span-7" {...container}>
             {/* Four hard lines — lead, emphasis, lead, emphasis. Each emphasis
-                word gets its own line so the serif reads as a deliberate beat
-                rather than an inline substitution. Leading is a touch looser
-                than a sans-only stack would need, to clear the serif descenders
-                in "clarity" and "confidence". */}
+                word gets its own line so the accent face reads as a deliberate
+                beat rather than an inline substitution. Leading stays at 1.1
+                here; the accent span carries its own line-height, because
+                Boldonse sets on a much taller body than Poppins. */}
             <motion.h1
-              className="font-display text-[clamp(2rem,1.3rem+2.2vw,3rem)] font-semibold leading-[1.1] tracking-display text-white"
+              className="font-display text-[clamp(2rem,1.3rem+2.2vw,3rem)] font-semibold leading-[1.3] tracking-display text-white"
               {...item}
             >
               {hero.headlineLines.map(({ lead, accent }) => (
@@ -99,7 +99,7 @@ export default function Hero() {
               {hero.sub}
             </motion.p>
 
-            <motion.div className="mt-9 flex flex-wrap gap-3.5" {...item}>
+            <motion.div className="mt-5 flex flex-wrap gap-3.5" {...item}>
               <a href="#calculator" className="btn btn-gold group">
                 {hero.primaryCta}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -109,19 +109,35 @@ export default function Hero() {
               <a href="#products" className="btn btn-outline-invert">{hero.secondaryCta}</a>
             </motion.div>
 
-            <motion.dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8" {...item}>
-              {hero.stats.map((s) => (
-                <div key={s.label}>
+            <motion.dl className="mt-7 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8" {...item}>
+              {hero.stats.map((s) => {
+                // A figure ("4.8", "34,000+") and a phrase ("Less than 15
+                // minutes") cannot share one type size in a 3-up row this
+                // narrow — the phrase would break to three lines and drag the
+                // baseline of its own label below the other two. Long values
+                // step down and wrap to two balanced lines instead, which keeps
+                // the row's label baseline level.
+                const isPhrase = s.value.length > 9
+                return (
+                <div key={s.label} className="flex flex-col">
                   <dt className="sr-only">{s.label}</dt>
-                  <dd>
-                    <span data-numeric className="flex items-center gap-1 font-display text-[1.375rem] font-semibold text-white sm:text-[1.625rem] md:text-[1.75rem]">
+                  <dd className="flex flex-1 flex-col">
+                    <span
+                      data-numeric
+                      className={`flex items-center gap-1 font-display font-semibold text-white ${
+                        isPhrase
+                          ? 'text-[0.9375rem] leading-[1.25] text-balance sm:text-[1rem] md:text-[1.0625rem]'
+                          : 'text-[1.375rem] sm:text-[1.625rem] md:text-[1.75rem]'
+                      }`}
+                    >
                       <CountUp value={s.value} />
                       {s.star && <Icon name="star" size={16} className="text-[var(--color-gold)]" />}
                     </span>
-                    <span className="mt-1.5 block text-sm text-white/65">{s.label}</span>
+                    <span className="mt-auto block pt-1.5 text-sm text-white/65">{s.label}</span>
                   </dd>
                 </div>
-              ))}
+                )
+              })}
             </motion.dl>
 
             {/* Credential line. No pill, no border — it belongs with the other

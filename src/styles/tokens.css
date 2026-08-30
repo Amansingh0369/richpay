@@ -53,16 +53,15 @@
   --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Accent face — the hero's two emphasis words only ("clarity" / "confidence").
-     IBM Plex Serif: the serif cut of the family the type data ranks as its
-     "Financial Trust" pairing (banks, finance, insurance, fintech). Institutional
-     rather than fashion-editorial, which is the register an NBFC needs.
+     Boldonse: a heavy display sans, client-chosen. One weight (400), no italic,
+     and it runs far larger on the body than Poppins at the same font-size — the
+     .font-accent rule in global.css corrects for that with an em-relative size
+     step, so the two faces sit on the same optical line.
      ⚠️ DEVIATION: Brand Guidelines v1.0 slide 05 fixes the type system at
-     Poppins + Montserrat. Both are geometric sans, so switching between them at
-     display size reads as an error rather than emphasis; a serif is the only way
-     to make the emphasis legible as deliberate. Scoped to two words and nothing
-     else. Needs client sign-off — delete this token and the .font-accent rule
-     in global.css to revert. */
-  --font-accent: 'IBM Plex Serif', ui-serif, Georgia, 'Times New Roman', serif;
+     Poppins + Montserrat. This is a deliberate third face, scoped to two words
+     and nothing else. Needs client sign-off — delete this token and the
+     .font-accent rule in global.css to revert. */
+  --font-accent: 'Boldonse', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   --text-hero: clamp(2.25rem, 1.45rem + 2.4vw, 3.25rem);
   --text-hero--line-height: 1.02;
